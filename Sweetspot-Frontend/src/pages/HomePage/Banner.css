@@ -1,0 +1,18 @@
+.banner .banner-btn:hover {
+    background: #6f1d1b;
+}
+
+.banner-ed{
+    background: #6f1d1b;
+}
+
+.banner-btn{
+    color: white;
+    background-color: #6f1d1b;
+    border-color: white;
+}
+
+.banner-btn:hover{
+    color: #6f1d1b !important;
+    background-color: white !important;
+}

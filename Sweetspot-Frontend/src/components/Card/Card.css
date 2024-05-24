@@ -1,0 +1,60 @@
+.card-container {
+    height: 300px;
+    width: 280px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.card-layout {
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.card-layout:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sweet-img img {
+    height: 200px;
+    width: 150px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sweet-img:hover img {
+    transform: scale(1.1);
+}
+
+.sweet-head-text {
+    background-color: #9e2a2b;
+    opacity: 0.8;
+    top: 10px;
+    left: 10px;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.cart-pill {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.cart-pill:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #fff;
+    color: #9e2a2b;
+    border-color: #9e2a2b;
+}
+
+.btn-primary:hover {
+    background-color: #a23b3c;
+    color: #fff;
+    border-color: #a23b3c;
+}

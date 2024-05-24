@@ -1,0 +1,10 @@
+.footer-text{
+    text-decoration: none;
+    color: #8d99ae;
+}
+
+.footer-text:hover{
+    color: white;
+    cursor: pointer;
+}
+
