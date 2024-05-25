@@ -2,6 +2,7 @@ import CardContainer from "../../components/CardContainer/CardContainer";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import ProductFilters from "../HomePage/ProductFilters";
 import "./style.css";
 
 function ShopPage() {
@@ -9,7 +10,8 @@ function ShopPage() {
     <div className="shop-page">
       <Header />
       <PageTitle title="Shop" />
-      <div className="mb-5 mt-5">
+      <ProductFilters/>
+      <div className="mb-5">
         <CardContainer />
       </div>
       <Footer />

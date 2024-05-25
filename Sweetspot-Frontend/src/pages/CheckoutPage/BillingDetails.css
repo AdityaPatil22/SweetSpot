@@ -1,0 +1,51 @@
+
+.cart-text{
+    font-size: 4rem;
+}
+
+.sticky-thead {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Optional: Adjust background color as needed */
+    z-index: 1; /* Ensure it's above the scrolling content */
+}
+
+.scrollable-table {
+    height: 500px;
+    overflow: auto;
+}
+.scrollable-table::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the track */
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the thumb */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.scrollable-table::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the thumb on hover */
+}
+
+.placeorder-btn {
+    background-color: white !important;
+    color: #9e2a2b !important;
+    border-color: #9e2a2b !important;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.placeorder-btn:hover {
+    background-color: #9e2a2b !important;
+    color: white !important;
+    border-color: #9e2a2b !important;
+}
+
+.checkbox-check {
+    background-color: #9e2a2b !important;
+    transition: background-color 0.3s;
+}
+
