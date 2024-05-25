@@ -11,6 +11,8 @@ function Card({ imageUrl, title, description, price }) {
     description: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
   };
+
+  
   return (
     <div className="card-container">
       <div className="rounded position-relative  card-layout">
