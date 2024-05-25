@@ -1,12 +1,16 @@
 .primary-text{
+    font-weight: 500;
     color: #ffc300;
 }
 .secondary-text{
+    font-weight: 500;
+    font-size: 70px;
     color: white;
 }
 
 .hero-header {
     position: relative;
+    height: 90vh;
 }
 
 .hero-header::before {

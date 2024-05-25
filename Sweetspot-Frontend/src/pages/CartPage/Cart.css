@@ -1,0 +1,59 @@
+.page-header {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://plus.unsplash.com/premium_photo-1661603980318-f3cf182b2ec8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sticky-thead {
+    position: sticky;
+    top: 0;
+    background-color: white; 
+    z-index: 1; 
+}
+
+.scrollable-table {
+    height: 300px;
+    overflow: auto;
+}
+.scrollable-table::-webkit-scrollbar {
+    width: 10px; 
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.scrollable-table::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.hr-margin {
+    margin-top: 3rem;
+    margin-bottom: 4rem; 
+}
+
+.checkout-box{
+    border-radius: 1.25rem !important;
+    overflow: hidden !important;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.cart-text{
+    font-size: 3rem;
+}
+
+.checkout-btn{
+    color: #9e2a2b;
+    margin-left: 7rem !important;
+}
+
+.checkout-btn:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}

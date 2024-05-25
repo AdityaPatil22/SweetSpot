@@ -1,3 +1,7 @@
+.banner-container{
+    height: 90vh;
+}
+
 .banner .banner-btn:hover {
     background: #6f1d1b;
 }

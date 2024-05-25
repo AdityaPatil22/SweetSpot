@@ -1,10 +1,14 @@
 .nav-filters {
-    background-color: #6f1d1b;
-    color: #eaf4f4;
+    background-color: #c9ada7;
     text-decoration: none;
     transition: transform 0.3s ease-in-out; 
 }
 
 .nav-filters:hover {
     transform: scale(1.1);
+}
+
+.nav-filters.active {
+    background-color: #9e2a2b;
+    color: #ffffff;
 }

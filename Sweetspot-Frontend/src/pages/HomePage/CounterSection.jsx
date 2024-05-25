@@ -2,7 +2,7 @@ import "./CounterSection.css"
 
 function CounterSection() {
     return (
-      <div className="container-fluid py-5">
+      <div className="container-fluid py-5 counter-container">
         <div className="container">
           <div className="bg-light p-5 rounded">
             <div className="row g-4 justify-content-center">

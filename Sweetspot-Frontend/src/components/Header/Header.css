@@ -6,7 +6,7 @@
   
   .navbar{
     height: 5rem;
-    background-color: white;
+    background-color: #f6f8f7;
   }
   
   .fa-cake-candles{
@@ -46,15 +46,23 @@
       align-items: center;
     }
   
-    .sweet-heading{
-      color: #9e2a2b;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
-  
-    .sweet-heading:hover{
+    
+    .sweet-heading {
+      margin-left: 20px;
       color: #9e2a2b;
-      font-weight: 400;
+      font-weight: 500;
       cursor: pointer;
     }
+    
+    .sweet-heading:hover {
+      animation: pulse 1s ease-in-out infinite;
+    }
+  
   
     .dropdown-menu {
       display: none;

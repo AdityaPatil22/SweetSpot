@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./BillingDetails.css"
 
 function BillingDetails() {
@@ -214,13 +215,16 @@ function BillingDetails() {
               </div>
               <hr />
               <div className="row g-4 text-center align-items-center justify-content-center pt-4">
-                <button
-                  type="submit"
-                  className="btn border-secondary py-3 px-4 text-uppercase w-100 placeorder-btn"
-                  onClick={redirectToPayment}
-                >
-                  Place Order
-                </button>
+                <Link to="/payment-page">
+                  <button
+                    type="submit"
+                    className="btn border-secondary py-3 px-4 text-uppercase w-100 placeorder-btn"
+                    onClick={redirectToPayment}
+                  >
+                    Place Order
+                  </button>
+                </Link>
+                
               </div>
             </div>
           </div>

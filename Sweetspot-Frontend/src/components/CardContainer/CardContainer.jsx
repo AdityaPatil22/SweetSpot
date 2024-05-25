@@ -4,7 +4,7 @@ import "./CardContainer.css"
 
 function CardContainer() {
     return(
-        <div className="cards-container">
+        <div className="cards-container mb-5">
         <div className="row justify-content-center">
           <div className="col-lg-10">
             <div className="row row-cols-1 row-cols-md-4 g-4">

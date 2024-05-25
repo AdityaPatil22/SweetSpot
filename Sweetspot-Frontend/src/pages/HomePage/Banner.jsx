@@ -6,7 +6,7 @@ function Banner() {
     };
   
     return (
-      <div className="container-fluid banner my-5 banner-ed">
+      <div className="container-fluid banner banner-ed banner-container">
         <div className="container py-5">
           <div className="row g-4 align-items-center">
             <div className="col-lg-6">
