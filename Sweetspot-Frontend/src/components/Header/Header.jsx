@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
+import SweetSpotLogo from "../../assets/Images/SweetSpotLogo.png"
 import './Header.css';
 
 function Header() {
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand" >
-          <h1 className="display-6 sweet-heading">SweetSpot</h1>
+        <Link to="/"  >
+          {/* <h1 className="display-6 sweet-heading">SweetSpot</h1> */}
+          <img src={SweetSpotLogo} className="navbar-brand" alt='Logo'/>
         </Link>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-md-0">

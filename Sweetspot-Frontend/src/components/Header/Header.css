@@ -8,6 +8,23 @@
     height: 5rem;
     background-color: #f6f8f7;
   }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .navbar-brand {
+    margin-left: 20px;
+    height: 170px;
+    width: 170px;
+    cursor: pointer;
+  }
+  
+  .navbar-brand:hover {
+    animation: pulse 1s ease-in-out infinite;
+  }
   
   .fa-cake-candles{
    color: #222222; 
@@ -44,23 +61,6 @@
       margin-left: 0.5rem;
       display: flex;
       align-items: center;
-    }
-  
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    
-    .sweet-heading {
-      margin-left: 20px;
-      color: #9e2a2b;
-      font-weight: 500;
-      cursor: pointer;
-    }
-    
-    .sweet-heading:hover {
-      animation: pulse 1s ease-in-out infinite;
     }
   
   
