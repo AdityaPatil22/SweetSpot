@@ -15,4 +15,8 @@ app.get("/", (req,res) =>{
   return res.status(200).send({message : "Welcome to SweetSpot"})
 })
 
+app.get("/login", (req, res) => {
+  res.send("Login Page");
+})
+
 module.exports = app;
