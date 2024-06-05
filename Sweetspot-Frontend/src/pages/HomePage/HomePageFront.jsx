@@ -12,20 +12,30 @@ function HomePageFront() {
             <div className="col-md-12 col-lg-5">
               <div id="carouselId" className="carousel slide position-relative" data-bs-ride="carousel">
                 <div className="carousel-inner" role="listbox">
-                  <div className="carousel-item active rounded">
-                    <img src="https://images.unsplash.com/photo-1600002415506-dd06090d3480?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                <div className="carousel-item active rounded">
+                    <img src="https://images.unsplash.com/photo-1502304180871-869c4f43f41d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       className="img-fluid w-100 h-100 bg-secondary rounded " alt="First slide" />
-                    <a href="#" className="btn px-4 py-2 text-white rounded">Cupcake</a>
+                    
+                  </div>
+                  <div className="carousel-item active rounded">
+                    <img src="https://images.unsplash.com/photo-1469533778471-92a68acc3633?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      className="img-fluid w-100 h-100 bg-secondary rounded " alt="First slide" />
+                    
                   </div>
                   <div className="carousel-item rounded">
                     <img src="https://images.unsplash.com/photo-1619685347066-6727bb62f478?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       className="img-fluid w-100 h-100 rounded " alt="Second slide" />
-                    <a href="#" className="btn px-4 py-2 text-white rounded">Doughnut</a>
+                    
                   </div>
                   <div className="carousel-item rounded">
                     <img src="https://images.unsplash.com/photo-1520352823777-923f7151a680?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                       className="img-fluid w-100 h-100 rounded " alt="Second slide" />
-                    <a href="#" className="btn px-4 py-2 text-white rounded">Macaroon</a>
+                    
+                  </div>
+                  <div className="carousel-item rounded">
+                    <img src="https://images.unsplash.com/photo-1508736375612-66c03035c629?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      className="img-fluid w-100 h-100 rounded " alt="Second slide" />
+                    
                   </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselId"

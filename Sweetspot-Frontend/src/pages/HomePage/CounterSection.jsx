@@ -4,7 +4,7 @@ function CounterSection() {
     return (
       <div className="container-fluid py-5 counter-container">
         <div className="container">
-          <div className="bg-light p-5 rounded">
+          <div className="bg-light p-5 rounded counter-back">
             <div className="row g-4 justify-content-center">
               <div className="col-md-6 col-lg-6 col-xl-3">
                 <div className="counter bg-white rounded p-5">

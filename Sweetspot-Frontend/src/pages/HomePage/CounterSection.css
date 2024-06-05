@@ -1,5 +1,5 @@
 .counter-container{
-    background-image: url(https://images.unsplash.com/photo-1523878288860-7ad281611901?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-image: url(https://images.unsplash.com/photo-1611659934318-06fd70ced53c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,4 +25,11 @@
 
 .counter h1 {
     margin-bottom: 0;
+}
+
+.counter-back{
+    background-image: url(https://images.unsplash.com/photo-1611659934318-06fd70ced53c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
