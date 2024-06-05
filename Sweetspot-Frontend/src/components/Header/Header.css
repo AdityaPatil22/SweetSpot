@@ -6,7 +6,6 @@
   
   .navbar{
     height: 5rem;
-    background-color: #f6f8f7;
   }
 
   @keyframes pulse {
@@ -34,7 +33,7 @@
   .nav-link{
     color: #222222 !important;
     margin-right: 0.7rem !important;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.3 s ease-in-out;
     border-radius: 2rem;
   }
   

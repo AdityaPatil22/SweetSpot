@@ -31,9 +31,9 @@ function Card({ imageUrl, title, description, price }) {
           <p className="mb-4">{description}</p>
           <div className="d-flex justify-content-between align-items-center">
             <p className="text-dark fs-5 fw-bold mb-0">{price}</p>
-            <a href="#" className="btn btn-primary rounded-pill px-4 cart-pill">
+            <button  className="btn btn-primary rounded-pill px-3 cart-pill">
               <i className="fa fa-shopping-bag me-2"></i> Add to cart
-            </a>
+            </button>
           </div>
         </div>
       </div>

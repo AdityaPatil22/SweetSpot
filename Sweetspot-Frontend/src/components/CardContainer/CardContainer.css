@@ -1,6 +1,0 @@
-.cards-container{
-    display: flex;
-    flex: 0 0 calc(25% - 20px);
-    flex-wrap: wrap;
-    gap: 20px;
-}
