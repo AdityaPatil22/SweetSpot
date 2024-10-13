@@ -215,7 +215,7 @@ function BillingDetails() {
               </div>
               <hr />
               <div className="row g-4 text-center align-items-center justify-content-center pt-4">
-                <Link to="/payment-page">
+                <Link to="/payment">
                   <button
                     type="submit"
                     className="btn border-secondary py-3 px-4 text-uppercase w-100 placeorder-btn"

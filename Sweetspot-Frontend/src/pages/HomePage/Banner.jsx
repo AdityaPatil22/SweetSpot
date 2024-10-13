@@ -15,7 +15,7 @@ function Banner() {
                 <h1 className="display-3" style={{ color: '#ffc300' }}>Freshly baked cakes</h1>
                 <p className="fw-normal display-3 text-light mb-4">in Our Store</p>
                 <p className="mb-4 text-light">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-                <Link to="/shop-page"><a className="banner-btn btn border-2 rounded-pill text-light py-3 px-5" onClick={redirectToShop}>BUY</a></Link>
+                <Link to="/shop"><a className="banner-btn btn border-2 rounded-pill text-light py-3 px-5" onClick={redirectToShop}>BUY</a></Link>
               </div>
             </div>
             <div className="col-lg-6">

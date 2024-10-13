@@ -6,7 +6,7 @@ import PaymentForm from "./PaymentForm"
 
 function PaymentPage(){
     return (    
-        <div className="payment-page">
+        <div className="payment">
             <Header/>
             <PageTitle title="Payment"/>
             <PaymentForm/>

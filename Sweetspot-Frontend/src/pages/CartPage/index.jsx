@@ -6,7 +6,7 @@ import "./style.css"
 
 function CartPage(){
     return (
-        <div className="cart-page">
+        <div className="cart">
             <Header/>
                 <PageTitle title="Cart"/>
                 <Cart/>

@@ -7,6 +7,7 @@ import SignUpPage from "./pages/SignUpPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import CartPage from "./pages/CartPage";
 import PaymentPage from "./pages/PaymentPage";
+import AddItems from "./pages/AddItemsPage/AddItems";
 
 const router = createBrowserRouter([
   {
@@ -22,22 +23,25 @@ const router = createBrowserRouter([
     element: <SignUpPage/>
   },
   {
-    path: "shop-page",
+    path: "shop",
     element: <ShopPage />,
   },
   {
-    path: "checkout-page",
+    path: "checkout",
     element: <CheckoutPage/>,
   },
   {
-    path: "cart-page",
+    path: "cart",
     element: <CartPage/>,
   },
   {
-    path: "payment-page",
+    path: "payment",
     element: <PaymentPage/>,
   },
-  
+  {
+    path: "add-items",
+    element: <AddItems/>,
+  },
 ]);
 
 export default function App() {

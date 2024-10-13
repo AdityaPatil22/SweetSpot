@@ -6,7 +6,7 @@ import "./style.css"
 
 function CheckoutPage(){
     return (
-        <div className="checkout-page">
+        <div className="checkout">
             <Header/>
                 <PageTitle title="Checkout"/>
                 <BillingDetails/>

@@ -14,7 +14,7 @@ function ShopPage() {
   };
 
   return (
-    <div className="shop-page">
+    <div className="shop">
       <Header />
       <PageTitle title="Shop" />
       <ProductFilters activeTab={activeTab} onTabChange={handleTabChange} />

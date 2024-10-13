@@ -13,16 +13,16 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
             <li className="nav-item">
-              <Link to="/shop-page" className="nav-link" >Shop</Link>
+              <Link to="/shop" className="nav-link" >Shop</Link>
             </li>
             <li className="nav-item">
-              <Link to="/checkout-page" className="nav-link">Checkout</Link>
+              <Link to="/checkout" className="nav-link">Checkout</Link>
             </li>
           </ul>
 
           <ul className="navbar-nav ms-auto mb-2 mb-md-0">
             <li className="nav-item">
-              <Link to="/cart-page" className="nav-link-icons" style={{ marginRight: '1.5rem' }}>
+              <Link to="/cart" className="nav-link-icons" style={{ marginRight: '1.5rem' }}>
                 <i className="fas fa-cart-shopping" style={{ color: '#000000' }}></i>
               </Link>
             </li>

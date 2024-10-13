@@ -229,7 +229,7 @@ function Cart() {
                 <h5 className="mb-0 ps-4 me-4">Total</h5>
                 <p className="mb-0 pe-4">₹990</p>
               </div>
-              <Link to="/checkout-page">
+              <Link to="/checkout">
                 <button
                   className="btn border-secondary rounded-pill px-3 py-3 text-uppercase mb-4 ms-4 checkout-btn"
                   type="button"
