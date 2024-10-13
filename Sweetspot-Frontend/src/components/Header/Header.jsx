@@ -18,6 +18,9 @@ function Header() {
             <li className="nav-item">
               <Link to="/checkout" className="nav-link">Checkout</Link>
             </li>
+            <li className="nav-item">
+              <Link to="/add-items" className="nav-link">Add Items</Link>
+            </li>
           </ul>
 
           <ul className="navbar-nav ms-auto mb-2 mb-md-0">

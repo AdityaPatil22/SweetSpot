@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import axios from "axios"
 import "./AddItemsForm.css";
 
 function AddItemsForm() {
@@ -17,7 +18,11 @@ function AddItemsForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
+    try{
+        axios.post('http://localhost:3000/api/products', formData)
+    } catch(error){
+        console.error(error)
+    }
   };
 
   return (
@@ -74,7 +79,7 @@ function AddItemsForm() {
 
         <div className="col-md-6">
           <label htmlFor="productCategory" className="form-label">
-            Select Product Category
+            Product Category
           </label>
           <select className="form-control" id="productCategory" value={formData.productCategory} onChange={handleInputChange}>
             <option>Cakes</option>
