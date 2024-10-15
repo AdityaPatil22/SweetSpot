@@ -14,10 +14,10 @@ function CardContainer({ filter }) {
       : products;
 
   return (
-    <div className="cards-container mb-5">
+    <div className="cards-container mb-5 ">
       <div className="row justify-content-center">
         <div className="col-lg-10">
-          <div className="row row-cols-1 row-cols-md-4 g-4">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             {filteredProducts.map((product, index) => (
               <div className="col" key={index}>
                 <Card

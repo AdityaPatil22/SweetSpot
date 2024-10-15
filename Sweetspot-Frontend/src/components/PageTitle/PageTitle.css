@@ -1,8 +1,9 @@
 .page-header {
-    position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://plus.unsplash.com/premium_photo-1661603980318-f3cf182b2ec8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 180px;
+  position: relative;
+  background: url(https://plus.unsplash.com/premium_photo-1661603980318-f3cf182b2ec8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 180px;
+  margin-top: 80px;
 }

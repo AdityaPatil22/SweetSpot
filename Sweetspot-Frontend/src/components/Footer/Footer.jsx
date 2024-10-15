@@ -3,7 +3,6 @@ import './Footer.css';
 function Footer() {
   return (
     <div className="container-fluid bg-dark text-white-50 footer pt-3">
-      <div className="pb-6" style={{ borderBottom: '1px solid #ffc300' }}></div>
       <div className="container py-3">
         <div className="row g-3">
           <div className="col-lg-3 col-md-6">
