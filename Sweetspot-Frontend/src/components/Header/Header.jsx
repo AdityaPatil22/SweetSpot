@@ -1,8 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import SweetSpotLogo from "../../assets/Images/SweetSpotLogo.png"
 import './Header.css';
 
 function Header() {
+  const navigate = useNavigate();
+  const handleLogout = async() => {
+    try{
+      await axios.post('http://localhost:3000/api/logout', {}, {withCredentials: true});
+      localStorage.removeItem("token");
+      navigate("/login")
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
       <div className="container-fluid">
@@ -37,7 +49,7 @@ function Header() {
                 <Link to ="/signup" className="dropdown-item" >Sign Up</Link>
                 <Link to ="/login" className="dropdown-item" >Login</Link>
                 <div className="dropdown-divider"></div>
-                <Link to ="/" className="dropdown-item" >Logout</Link>
+                <Link to ="/" className="dropdown-item" onClick={handleLogout}>Logout</Link>
               </div>
             </li>
           </ul>

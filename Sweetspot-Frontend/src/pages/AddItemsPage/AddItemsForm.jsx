@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import "./AddItemsForm.css";
 
 function AddItemsForm() {
@@ -11,15 +12,34 @@ function AddItemsForm() {
     prouctCategory: "",
   });
 
+  const navigate = useNavigate();
+
   const handleInputChange = (event) => {
     const { id, value } = event.target;
     setFormData({ ...formData, [id]: value });
+  };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0]; // Get the selected file
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        productImage: reader.result, // Store Base64 in productImage field
+      }));
+    };
+
+    if (file) {
+      reader.readAsDataURL(file); // Read file as Base64
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     try{
         axios.post('http://localhost:3000/api/products', formData)
+        navigate("/")
     } catch(error){
         console.error(error)
     }
@@ -74,7 +94,7 @@ function AddItemsForm() {
           <label htmlFor="productImage" className="form-label">
             Product Image
           </label>
-          <input type="file" className="form-control" id="productImage" />
+          <input type="file" className="form-control" id="productImage" onChange={handleImageUpload}/>
         </div>
 
         <div className="col-md-6">
