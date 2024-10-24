@@ -11,30 +11,9 @@ function SignUpPage() {
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState({});
 
+  const [backendError, setBackendError] = useState("");
   const navigate = useNavigate();
-
-  const validate = () => {
-    const errors = {};
-    if (!formData.name) {
-      errors.name = "Name is required.";
-    }
-
-    if (!formData.email) {
-      errors.email = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Please enter a valid email address.";
-    }
-
-    if (!formData.password) {
-      errors.password = "Password is required.";
-    } else if (formData.password.length < 6) {
-      errors.password = "Password must be at least 6 characters long.";
-    }
-
-    return errors;
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,14 +25,18 @@ function SignUpPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const validationErrors = validate();
     try {
-      if (Object.keys(validationErrors).length === 0) {
-        await axios.post("http://localhost:3000/api/signup", formData);
-        navigate("/login")
-      }
+      await axios.post("http://localhost:3000/api/signup", formData);
+      navigate("/login");
     } catch (error) {
-      console.error("Error creating user:", error.response || error.message);
+      if (error.response) {
+        setBackendError(error.response.data.message);
+      } else {
+        setBackendError("An unexpected error occurred");
+      }
+      setTimeout(() => {
+        setBackendError("");
+      }, 2000);
     }
   };
 
@@ -62,11 +45,7 @@ function SignUpPage() {
       <Header />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-sm-6 col-md-7 intro-section">
-            <div className="intro-content-wrapper">
-              {/* Additional content can go here */}
-            </div>
-          </div>
+          <div className="col-sm-6 col-md-7 intro-section"></div>
           <div className="col-sm-6 col-md-5 form-section">
             <div className="login-wrapper">
               <h2 className="login-title">Sign Up</h2>
@@ -85,9 +64,6 @@ function SignUpPage() {
                     onChange={handleChange}
                     required
                   />
-                  {errors.name && (
-                    <div className="invalid-feedback">{errors.name}</div>
-                  )}
                 </div>
 
                 <div className="form-group">
@@ -104,9 +80,6 @@ function SignUpPage() {
                     onChange={handleChange}
                     required
                   />
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
-                  )}
                 </div>
 
                 <div className="form-group mb-3">
@@ -124,16 +97,12 @@ function SignUpPage() {
                     required
                     minLength="6"
                   />
-                  {errors.password && (
-                    <div className="invalid-feedback">{errors.password}</div>
-                  )}
                 </div>
 
                 <div className="d-flex justify-content-between align-items-center mb-5">
                   <button
                     type="submit"
                     className="btn login-btn"
-                    disabled={Object.keys(errors).length > 0}
                     onClick={handleSubmit}
                   >
                     Sign Up
@@ -147,6 +116,11 @@ function SignUpPage() {
                   Login here
                 </Link>
               </p>
+              {backendError && (
+                <div className="alert alert-danger" role="alert">
+                  {backendError}
+                </div>
+              )}
             </div>
           </div>
         </div>

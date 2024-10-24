@@ -22,7 +22,7 @@
 .nav-link {
   color: #222222 !important;
   margin-right: 0.7rem !important;
-  transition: background-color 0.2s ease-in-out, color 0.3 s ease-in-out;
+  transition: transform 0.1s ease, color 0.1s ease, font-size 0.1s ease;
   border-radius: 2rem;
 }
 
