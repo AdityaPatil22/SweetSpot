@@ -1,10 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/slices/authSlice";
 import axios from "axios";
 import SweetSpotLogo from "../../assets/Images/SweetSpotLogo.png";
 import "./Header.css";
 
 function Header() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   const handleLogout = async () => {
     try {
       await axios.post(
@@ -12,6 +17,7 @@ function Header() {
         {},
         { withCredentials: true }
       );
+      dispatch(logout());
       localStorage.removeItem("token");
       navigate("/login");
     } catch (error) {
@@ -38,9 +44,13 @@ function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/add-items" className="nav-link">
-                Add Items
-              </Link>
+              {isLoggedIn ? (
+                <Link to="/add-items" className="nav-link">
+                  Add Items
+                </Link>
+              ) : (
+                <></>
+              )}
             </li>
           </ul>
 
@@ -68,16 +78,26 @@ function Header() {
                 className="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdown"
               >
-                <Link to="/signup" className="dropdown-item">
-                  Sign Up
-                </Link>
-                <Link to="/login" className="dropdown-item">
-                  Login
-                </Link>
-                <div className="dropdown-divider"></div>
-                <Link to="/" className="dropdown-item" onClick={handleLogout}>
-                  Logout
-                </Link>
+                {isLoggedIn ? (
+                  <>
+                    <Link
+                      to="/"
+                      className="dropdown-item"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/signup" className="dropdown-item">
+                      Sign Up
+                    </Link>
+                    <Link to="/login" className="dropdown-item">
+                      Login
+                    </Link>
+                  </>
+                )}
               </div>
             </li>
           </ul>

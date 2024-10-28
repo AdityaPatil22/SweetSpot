@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/slices/authSlice";
+import axios from "axios";
 import Header from "../../components/Header/Header";
 import "./style.css";
 
@@ -14,6 +16,7 @@ function LoginPage() {
   const [backendError, setBackendError] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -26,9 +29,10 @@ function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/login", formData, {
+      const response = await axios.post("http://localhost:3000/api/login", formData, {
         withCredentials: true,
       });
+      dispatch(login(response.data.token));
       navigate("/");
     } catch (error) {
       if (error.response) {
