@@ -4,9 +4,9 @@ const addItem = async (req, res) => {
   try {
     const item = new Item(req.body);
     await item.save();
-    res.status(200);
+    return res.status(200).json({ message: "Item added successfully" });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({ message: "Failed to Add Item" });
   }
 };
 
