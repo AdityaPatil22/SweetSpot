@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Header from "../../components/Header/Header";
-import "./style.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Header from "../../components/Header/Header";
+import "./style.css";
 
 function SignUpPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ function SignUpPage() {
   });
 
   const [backendError, setBackendError] = useState("");
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
