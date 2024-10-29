@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -7,9 +6,8 @@ import "./AddItemsForm.css";
 
 function AddItemsForm() {
   const [backendError, setBackendError] = useState("");
-  const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState("");
 
-  // Define Yup validation schema
   const validationSchema = Yup.object({
     productName: Yup.string()
       .min(3, "Product Name must be at least 3 characters")
@@ -22,22 +20,45 @@ function AddItemsForm() {
       .positive("Price must be a positive number")
       .required("Price is required"),
     productCategory: Yup.string().required("Please select a category"),
+    productImage: Yup.mixed()
+      .required("Image is required")
+      .test("fileSize", "File size is too large", (value) => {
+        return value && value.size <= 2000000;
+      })
+      .test("fileType", "Unsupported File Format", (value) => {
+        return (
+          value && (value.type === "image/jpeg" || value.type === "image/png")
+        );
+      }),
   });
 
-  // Initialize Formik with initialValues, validationSchema, and onSubmit handler
   const formik = useFormik({
     initialValues: {
       productName: "",
       productDescription: "",
       productPrice: "",
-      productImage: "",
+      productImage: null,
       productCategory: "",
     },
     validationSchema,
     onSubmit: async (values) => {
       try {
-        await axios.post("http://localhost:3000/api/products", values);
-        navigate("/");
+        // First upload the image to Cloudinary
+        const imageUrl = await uploadImageToCloudinary(values.productImage);
+        
+        // Then submit the form data with the image URL
+        const formData = {
+          ...values,
+          productImage: imageUrl,
+        };
+        
+        await axios.post("http://localhost:3000/api/products", formData);
+        setSuccessMessage("Product added successfully!");
+        formik.resetForm();
+
+        setTimeout(() => {
+          setSuccessMessage("");
+        }, 2000);
       } catch (error) {
         if (error.response) {
           setBackendError(error.response.statusText);
@@ -49,11 +70,32 @@ function AddItemsForm() {
     },
   });
 
+  const uploadImageToCloudinary = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "sweet-spot");
+
+    const response = await axios.post(
+      `https://api.cloudinary.com/v1_1/dgv6havjj/image/upload`,
+      formData
+    );
+    return response.data.secure_url;
+  };
+
+  const handleImageChange = (event) => {
+    formik.setFieldValue("productImage", event.target.files[0]);
+  };
+
   return (
     <>
       {backendError && (
         <div className="alert alert-danger" role="alert">
           {backendError}
+        </div>
+      )}
+      {successMessage && (
+        <div className="alert alert-success" role="alert">
+          {successMessage}
         </div>
       )}
       <div className="form-container">
@@ -84,9 +126,12 @@ function AddItemsForm() {
               {...formik.getFieldProps("productDescription")}
               placeholder="Enter Description"
             />
-            {formik.touched.productDescription && formik.errors.productDescription && (
-              <p className="text-danger">{formik.errors.productDescription}</p>
-            )}
+            {formik.touched.productDescription &&
+              formik.errors.productDescription && (
+                <p className="text-danger">
+                  {formik.errors.productDescription}
+                </p>
+              )}
           </div>
 
           <div className="col-md-6">
@@ -111,19 +156,18 @@ function AddItemsForm() {
             </label>
             <input
               type="file"
-              className="form-control"
+              className={`form-control ${
+                formik.touched.productImage && formik.errors.productImage
+                  ? "is-invalid"
+                  : ""
+              }`}
               id="productImage"
-              onChange={(event) => {
-                const file = event.target.files[0];
-                if (file) {
-                  const reader = new FileReader();
-                  reader.onloadend = () => {
-                    formik.setFieldValue("productImage", reader.result);
-                  };
-                  reader.readAsDataURL(file);
-                }
-              }}
+              onChange={handleImageChange}
+              onBlur={formik.handleBlur}
             />
+            {formik.touched.productImage && formik.errors.productImage && (
+              <p className="text-danger">{formik.errors.productImage}</p>
+            )}
           </div>
 
           <div className="col-md-6">
@@ -141,13 +185,18 @@ function AddItemsForm() {
               <option value="Cookies">Cookies</option>
               <option value="Bakery">Bakery</option>
             </select>
-            {formik.touched.productCategory && formik.errors.productCategory && (
-              <p className="text-danger">{formik.errors.productCategory}</p>
-            )}
+            {formik.touched.productCategory &&
+              formik.errors.productCategory && (
+                <p className="text-danger">{formik.errors.productCategory}</p>
+              )}
           </div>
 
           <div className="col-12">
-            <button type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={formik.isSubmitting}
+            >
               Submit
             </button>
           </div>
