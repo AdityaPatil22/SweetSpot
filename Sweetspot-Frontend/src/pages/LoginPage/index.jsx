@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../store/slices/authSlice";
 import axios from "axios";
 import Header from "../../components/Header/Header";
-import "./style.css";
+import "./login.css";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -49,10 +49,9 @@ function LoginPage() {
   return (
     <div className="login-container">
       <Header />
-      <div className="container-fluid">
+      <div className="login-main-container">
         <div className="row">
-          <div className="col-sm-6 col-md-7 intro-section"></div>
-          <div className="col-sm-6 col-md-5 form-section">
+          <div className="col-sm-6 col-md-12 form-section">
             <div className="login-wrapper">
               <h2 className="login-title">Login</h2>
               <form onSubmit={handleSubmit} noValidate>

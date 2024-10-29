@@ -20,12 +20,6 @@ function CardContainer({ filter }) {
     }
   }, [productStatus, dispatch]);
 
-  if (productStatus === "loading") {
-    return <p>Loading...</p>;
-  } else if (productStatus === "failed") {
-    return <p>Error loading products</p>;
-  }
-
   const filteredProducts =
     filter !== "All Products"
       ? products.filter((product) => product.category === filter)
