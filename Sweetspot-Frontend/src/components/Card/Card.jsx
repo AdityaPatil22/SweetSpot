@@ -1,8 +1,5 @@
-
 import PropTypes from "prop-types";
 import "./Card.css";
-
-
 
 function Card({ imageUrl, title, description, price }) {
   Card.propTypes = {
@@ -12,7 +9,6 @@ function Card({ imageUrl, title, description, price }) {
     price: PropTypes.string.isRequired,
   };
 
-  
   return (
     <div className="card-container">
       <div className="rounded position-relative  card-layout">
