@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/slices/authSlice";
+import { selectCartItems } from "../../store/slices/cartSlice";
+
 import axios from "axios";
 import SweetSpotLogo from "../../assets/Images/SweetSpotLogo.png";
 import "./Header.css";
@@ -8,7 +10,10 @@ import "./Header.css";
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems)
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const totalQuantity = cartItems.length;
 
   const handleLogout = async () => {
     try {
@@ -65,6 +70,9 @@ function Header() {
                   className="fas fa-cart-shopping"
                   style={{ color: "#000000" }}
                 ></i>
+                <span className="top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: "0.7rem"}}>
+                  {totalQuantity}
+                </span>
               </Link>
             </li>
             <li className="nav-item dropdown">
