@@ -24,7 +24,6 @@ function CardContainer({ filter }) {
     filter !== "All Products"
       ? products.filter((product) => product.category === filter)
       : products;
-
   return (
     <div className="cards-container mb-5">
       <div className="row justify-content-center">
@@ -33,7 +32,7 @@ function CardContainer({ filter }) {
             {filteredProducts.map((product) => (
               <div className="col" key={product._id}>
                 <Card
-                  id = {product._id}
+                  id={product._id}
                   imageUrl={product.productImage}
                   title={product.productName}
                   description={product.productDescription}

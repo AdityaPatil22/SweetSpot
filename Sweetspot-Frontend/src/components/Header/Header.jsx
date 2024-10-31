@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/slices/authSlice";
-import { selectCartItems } from "../../store/slices/cartSlice";
+import { selectCartItems , clearCart } from "../../store/slices/cartSlice";
 
 import axios from "axios";
 import SweetSpotLogo from "../../assets/Images/SweetSpotLogo.png";
@@ -23,6 +23,7 @@ function Header() {
         { withCredentials: true }
       );
       dispatch(logout());
+      dispatch(clearCart())
       localStorage.removeItem("token");
       navigate("/login");
     } catch (error) {
@@ -41,11 +42,6 @@ function Header() {
             <li className="nav-item">
               <Link to="/shop" className="nav-link">
                 Shop
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/checkout" className="nav-link">
-                Checkout
               </Link>
             </li>
             <li className="nav-item">

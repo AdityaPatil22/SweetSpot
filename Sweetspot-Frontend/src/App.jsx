@@ -8,6 +8,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import CartPage from "./pages/CartPage";
 import PaymentPage from "./pages/PaymentPage";
 import AddItems from "./pages/AddItemsPage/AddItems";
+import ProtectedRoute from "./components/protectedRoute/protectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -28,19 +29,35 @@ const router = createBrowserRouter([
   },
   {
     path: "checkout",
-    element: <CheckoutPage />,
+    element: (
+      <ProtectedRoute>
+        <CheckoutPage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "cart",
-    element: <CartPage />,
+    element: (
+      <ProtectedRoute>
+        <CartPage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "payment",
-    element: <PaymentPage />,
+    element: (
+      <ProtectedRoute>
+        <PaymentPage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "add-items",
-    element: <AddItems />,
+    element: (
+      <ProtectedRoute>
+        <AddItems />
+      </ProtectedRoute>
+    ),
   },
 ]);
 

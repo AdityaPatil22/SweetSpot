@@ -56,4 +56,6 @@
 
 .checkout-btn:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: #9e2a2b;
+    color: #f1f1f1;
 }

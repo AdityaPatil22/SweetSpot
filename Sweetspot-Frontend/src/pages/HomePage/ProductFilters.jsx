@@ -1,4 +1,3 @@
-// ProductFilters.js
 
 import PropTypes from 'prop-types';
 import "./ProductFilters.css";
