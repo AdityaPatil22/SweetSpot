@@ -146,31 +146,41 @@ function BillingDetails() {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItems.map((item) => (
-                      <tr key={item.id}>
-                        <th scope="row">
-                          <div className="d-flex align-items-center mt-2">
-                            <img
-                              src={item.imageUrl}
-                              className="img-fluid rounded-circle"
-                              style={{ width: "90px", height: "90px" }}
-                              alt=""
-                            />
-                          </div>
-                        </th>
-                        <td className="py-5">{item.title}</td>
-                        <td className="py-5">₹ {item.price}</td>
-                        <td className="py-5 d-flex justify-content-center">{item.quantity}</td>
-                        <td className="py-5">₹ {item.price * item.quantity}</td>
-                      </tr>
-                    ))}
-                    <tr>
-                      <th scope="row" colSpan="6" >
-                        <div className="d-flex fw-bold h2 justify-content-center align-items-center mt-2">
-                          Total : ₹ {cartTotal}
-                        </div>
-                      </th>
-                    </tr>
+                    {cartItems == 0 ? (
+                      <div className="fw-bold mt-4 d-flex justify-content-center">No Items in the cart</div>
+                    ) : (
+                      cartItems.map((item) => (
+                        <>
+                          <tr key={item.id}>
+                            <th scope="row">
+                              <div className="d-flex align-items-center mt-2">
+                                <img
+                                  src={item.imageUrl}
+                                  className="img-fluid rounded-circle"
+                                  style={{ width: "90px", height: "90px" }}
+                                  alt=""
+                                />
+                              </div>
+                            </th>
+                            <td className="py-5">{item.title}</td>
+                            <td className="py-5">₹ {item.price}</td>
+                            <td className="py-5 d-flex justify-content-center">
+                              {item.quantity}
+                            </td>
+                            <td className="py-5">
+                              ₹ {item.price * item.quantity}
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row" colSpan="6">
+                              <div className="d-flex fw-bold h2 justify-content-center align-items-center mt-2">
+                                Total : ₹ {cartTotal}
+                              </div>
+                            </th>
+                          </tr>
+                        </>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>

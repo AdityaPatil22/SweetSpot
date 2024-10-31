@@ -38,7 +38,7 @@ function Cart() {
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Total</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Clear</th>
               </tr>
             </thead>
             <tbody>

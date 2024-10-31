@@ -15,7 +15,7 @@ function Card({ id, imageUrl, title, description, price }) {
     setAddItem("Item Added to cart");
     setTimeout(() => {
       setAddItem("");
-    }, 2000);
+    }, 1000);
   };
 
   Card.propTypes = {
