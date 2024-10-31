@@ -14,6 +14,8 @@ function Cart() {
   const cartTotal = useSelector(selectCartTotal);
   const dispatch = useDispatch();
 
+  const finalAmount = Math.round(cartTotal - cartTotal / 10 + 50);
+
   const handleIncrement = (itemId) => {
     dispatch(incrementQuantity({ id: itemId }));
   };
@@ -38,65 +40,68 @@ function Cart() {
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Total</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Clear</th>
               </tr>
             </thead>
             <tbody>
-              {cartItems == 0 ? (<div className="fw-bold mt-4">No Items in the cart</div>): (cartItems.map((item) => (
-                <tr key={item.id}>
-                  <th scope="row">
-                    <img
-                      src={item.imageUrl}
-                      className="img-fluid me-5 rounded-circle"
-                      style={{ width: "80px", height: "80px" }}
-                      alt={item.title}
-                    />
-                  </th>
-                  <td>
-                    <p className="mb-0 mt-4">{item.title}</p>
-                  </td>
-                  <td>
-                    <p className="mb-0 mt-4">₹ {item.price}</p>
-                  </td>
-                  <td>
-                    <div
-                      className="input-group quantity mt-4"
-                      style={{ width: "100px" }}
-                    >
-                      <button
-                        className="btn btn-sm btn-minus rounded-circle bg-light border"
-                        onClick={() => handleDecrement(item.id)}
-                      >
-                        <i className="fa fa-minus"></i>
-                      </button>
-                      <input
-                        type="text"
-                        className="form-control form-control-sm text-center border-0"
-                        value={item.quantity}
-                        readOnly
+              {cartItems == 0 ? (
+                <div className="fw-bold mt-4">No Items in the cart</div>
+              ) : (
+                cartItems.map((item) => (
+                  <tr key={item.id}>
+                    <th scope="row">
+                      <img
+                        src={item.imageUrl}
+                        className="img-fluid me-5 rounded-circle"
+                        style={{ width: "80px", height: "80px" }}
+                        alt={item.title}
                       />
-                      <button
-                        className="btn btn-sm btn-plus rounded-circle bg-light border"
-                        onClick={() => handleIncrement(item.id)}
+                    </th>
+                    <td>
+                      <p className="mb-0 mt-4">{item.title}</p>
+                    </td>
+                    <td>
+                      <p className="mb-0 mt-4">₹ {item.price}</p>
+                    </td>
+                    <td>
+                      <div
+                        className="input-group quantity mt-4"
+                        style={{ width: "100px" }}
                       >
-                        <i className="fa fa-plus"></i>
+                        <button
+                          className="btn btn-sm btn-minus rounded-circle bg-light border"
+                          onClick={() => handleDecrement(item.id)}
+                        >
+                          <i className="fa fa-minus"></i>
+                        </button>
+                        <input
+                          type="text"
+                          className="form-control form-control-sm text-center border-0"
+                          value={item.quantity}
+                          readOnly
+                        />
+                        <button
+                          className="btn btn-sm btn-plus rounded-circle bg-light border"
+                          onClick={() => handleIncrement(item.id)}
+                        >
+                          <i className="fa fa-plus"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <p className="mb-0 mt-4">₹{item.price * item.quantity}</p>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-md rounded-circle bg-light border mt-4"
+                        onClick={() => handleRemove(item.id)}
+                      >
+                        <i className="fa fa-times text-danger"></i>
                       </button>
-                    </div>
-                  </td>
-                  <td>
-                    <p className="mb-0 mt-4">₹{item.price * item.quantity}</p>
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-md rounded-circle bg-light border mt-4"
-                      onClick={() => handleRemove(item.id)}
-                    >
-                      <i className="fa fa-times text-danger"></i>
-                    </button>
-                  </td>
-                </tr>
-              )))}
-              
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
@@ -109,20 +114,33 @@ function Cart() {
                   Cart <span className="fw-normal">Total</span>
                 </h1>
                 <div className="d-flex justify-content-between mb-4">
-                  <h5 className="mb-0 me-4">Subtotal:</h5>
-                  <p className="mb-0">₹{cartTotal}</p>
+                  <h5 className="mb-0 me-4">Discount :</h5>
+                  <p className="mb-0">10 %</p>
                 </div>
-                <p className="mb-0 text-end">Shipping to Address</p>
+                <div className="d-flex justify-content-between mb-4">
+                  <h5 className="mb-0 me-4">Shipping Charges :</h5>
+                  <p className="mb-0">₹ 50</p>
+                </div>
               </div>
               <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                 <h5 className="mb-0 ps-4 me-4">Total</h5>
-                <p className="mb-0 pe-4">₹{cartTotal}</p>
+                {cartTotal == 0 ? (
+                  <p className="mb-0 pe-4">₹ 0</p>
+                ) : (
+                  <p className="mb-0 pe-4">₹{finalAmount}</p>
+                )}
               </div>
-              <Link to="/checkout">
-                <button className="btn border-secondary rounded-pill px-3 py-3 text-uppercase mb-4 ms-4 checkout-btn">
-                  Proceed Checkout
-                </button>
-              </Link>
+              {cartItems == 0 ? (
+                <div className="h4 d-flex justify-content-center mb-4 ">
+                  Your cart is empty
+                </div>
+              ) : (
+                <Link to="/checkout">
+                  <button className="btn border-secondary rounded-pill px-3 py-3 text-uppercase mb-4 ms-4 checkout-btn">
+                    Proceed Checkout
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

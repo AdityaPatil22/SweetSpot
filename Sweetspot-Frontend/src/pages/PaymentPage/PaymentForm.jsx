@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCartTotal } from "../../store/slices/cartSlice";
 import "./PaymentForm.css";
 
 function PaymentForm() {
+  const cartTotal = useSelector(selectCartTotal);
+  const finalAmount = cartTotal - cartTotal / 10 + 50;
+
   const [formData, setFormData] = useState({
     cardHolderName: "",
     cardNumber: "",
@@ -18,10 +23,11 @@ function PaymentForm() {
     });
   };
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted with data:", formData);
-    // You can perform further actions here, like sending the data to a server
   };
 
   return (
@@ -86,7 +92,7 @@ function PaymentForm() {
               <div className="col-12">
                 <button type="submit" className="btn btn-primary-payment mb-3">
                   <Link to="/" className="text-white text-decoration-none">
-                    <span className="ps-3 text-white">Pay $243</span>
+                    <span className="ps-3 text-white">Pay ₹ {finalAmount}</span>
                     <span className="fas fa-arrow-right text-white"></span>
                   </Link>
                 </button>

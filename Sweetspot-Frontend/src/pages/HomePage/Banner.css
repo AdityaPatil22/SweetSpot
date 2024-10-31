@@ -1,12 +1,11 @@
 .banner-container{
-
+    margin: 70px 0px;
+    display: flex;
+    justify-content: space-between;
+    color: black;
 }
 
 .banner .banner-btn:hover {
-    background: #6f1d1b;
-}
-
-.banner-ed{
     background: #6f1d1b;
 }
 
@@ -17,6 +16,6 @@
 }
 
 .banner-btn:hover{
-    color: #6f1d1b !important;
-    background-color: white !important;
+    color: white !important;
+    background-color: #ffc300 !important;
 }
