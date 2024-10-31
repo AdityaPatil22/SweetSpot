@@ -28,7 +28,7 @@ function CounterSection() {
               <div className="counter bg-white rounded p-5">
                 <i className="fa fa-users text-secondary"></i>
                 <h4>quality of service</h4>
-                <h1>99%</h1>
+                <h1>100%</h1>
               </div>
             </div>
 

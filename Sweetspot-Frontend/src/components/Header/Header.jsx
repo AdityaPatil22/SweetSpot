@@ -45,11 +45,6 @@ function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/checkout" className="nav-link">
-                Checkout
-              </Link>
-            </li>
-            <li className="nav-item">
               {isLoggedIn ? (
                 <Link to="/add-items" className="nav-link">
                   Add Items
