@@ -1,0 +1,79 @@
+.signup-main-container {
+  background-image: url("https://images.unsplash.com/photo-1432821579285-1b649e5b1ce3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 450px;
+  width: 400px;
+}
+
+@media (max-width: 767px) {
+  .form-section {
+    padding: 35px;
+  }
+}
+
+.signup-wrapper {
+  width: 300px;
+  max-width: 100%;
+}
+@media (max-width: 575px) {
+  .signup-wrapper {
+    width: 100%;
+  }
+}
+.signup-wrapper .form-control {
+  border: 0;
+  border-bottom: 1px solid #bdbdbd;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 15px 10px;
+  margin-bottom: 7px;
+}
+
+.signup-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-btn {
+  margin-top: 17px;
+  padding: 10px 25px;
+  background-color: #000;
+  border-radius: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+.signup-btn:hover {
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  color: #080808;
+  text-decoration: underline;
+}
+
+.signup-wrapper-footer-text {
+  font-size: 14px;
+  text-align: center;
+}

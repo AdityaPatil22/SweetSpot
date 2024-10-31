@@ -1,16 +1,21 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import "./BillingDetails.css"
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectCartItems, selectCartTotal } from "../../store/slices/cartSlice";
+import { Link } from "react-router-dom";
+import "./BillingDetails.css";
 
 function BillingDetails() {
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
+
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    address: '',
-    town: '',
-    zipcode: '',
-    mobile: '',
-    email: '',
+    firstName: "",
+    lastName: "",
+    address: "",
+    town: "",
+    zipcode: "",
+    mobile: "",
+    email: "",
   });
 
   const handleChange = (e) => {
@@ -22,13 +27,7 @@ function BillingDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic
     console.log(formData);
-  };
-
-  const redirectToPayment = () => {
-    // Redirect to payment logic
-    console.log("Redirecting to payment...");
   };
 
   return (
@@ -41,7 +40,9 @@ function BillingDetails() {
               <div className="row">
                 <div className="col-md-12 col-lg-6">
                   <div className="form-item w-100">
-                    <label className="form-label my-3">First Name<sup>*</sup></label>
+                    <label className="form-label my-3">
+                      First Name<sup>*</sup>
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -53,7 +54,9 @@ function BillingDetails() {
                 </div>
                 <div className="col-md-12 col-lg-6">
                   <div className="form-item w-100">
-                    <label className="form-label my-3">Last Name<sup>*</sup></label>
+                    <label className="form-label my-3">
+                      Last Name<sup>*</sup>
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -65,7 +68,9 @@ function BillingDetails() {
                 </div>
               </div>
               <div className="form-item">
-                <label className="form-label my-3">Address <sup>*</sup></label>
+                <label className="form-label my-3">
+                  Address <sup>*</sup>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -76,7 +81,9 @@ function BillingDetails() {
                 />
               </div>
               <div className="form-item">
-                <label className="form-label my-3">Town/City<sup>*</sup></label>
+                <label className="form-label my-3">
+                  Town/City<sup>*</sup>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -87,7 +94,9 @@ function BillingDetails() {
                 />
               </div>
               <div className="form-item">
-                <label className="form-label my-3">Postcode/Zip<sup>*</sup></label>
+                <label className="form-label my-3">
+                  Postcode/Zip<sup>*</sup>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -98,7 +107,9 @@ function BillingDetails() {
                 />
               </div>
               <div className="form-item">
-                <label className="form-label my-3">Mobile<sup>*</sup></label>
+                <label className="form-label my-3">
+                  Mobile<sup>*</sup>
+                </label>
                 <input
                   type="tel"
                   className="form-control"
@@ -109,7 +120,9 @@ function BillingDetails() {
                 />
               </div>
               <div className="form-item">
-                <label className="form-label my-3">Email Address<sup>*</sup></label>
+                <label className="form-label my-3">
+                  Email Address<sup>*</sup>
+                </label>
                 <input
                   type="email"
                   className="form-control"
@@ -133,82 +146,30 @@ function BillingDetails() {
                     </tr>
                   </thead>
                   <tbody>
+                    {cartItems.map((item) => (
+                      <tr key={item.id}>
+                        <th scope="row">
+                          <div className="d-flex align-items-center mt-2">
+                            <img
+                              src={item.imageUrl}
+                              className="img-fluid rounded-circle"
+                              style={{ width: "90px", height: "90px" }}
+                              alt=""
+                            />
+                          </div>
+                        </th>
+                        <td className="py-5">{item.title}</td>
+                        <td className="py-5">₹ {item.price}</td>
+                        <td className="py-5 d-flex justify-content-center">{item.quantity}</td>
+                        <td className="py-5">₹ {item.price * item.quantity}</td>
+                      </tr>
+                    ))}
                     <tr>
-                      <th scope="row">
-                        <div className="d-flex align-items-center mt-2">
-                          <img
-                            src="https://images.unsplash.com/photo-1534119139482-b530a7f9a98b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            className="img-fluid rounded-circle"
-                            style={{ width: '90px', height: '90px' }}
-                            alt=""
-                          />
+                      <th scope="row" colSpan="6" >
+                        <div className="d-flex fw-bold h2 justify-content-center align-items-center mt-2">
+                          Total : ₹ {cartTotal}
                         </div>
                       </th>
-                      <td className="py-5">Candies</td>
-                      <td className="py-5">₹299</td>
-                      <td className="py-5">2</td>
-                      <td className="py-5">₹600.00</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex align-items-center mt-2">
-                          <img
-                            src="https://images.unsplash.com/photo-1499195333224-3ce974eecb47?q=80&w=1951&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            className="img-fluid rounded-circle"
-                            style={{ width: '90px', height: '90px' }}
-                            alt=""
-                          />
-                        </div>
-                      </th>
-                      <td className="py-5">Sugar Candy</td>
-                      <td className="py-5">₹299</td>
-                      <td className="py-5">2</td>
-                      <td className="py-5">₹600.00</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex align-items-center mt-2">
-                          <img
-                            src="https://images.unsplash.com/photo-1619685350081-854862f9cbb8?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            className="img-fluid rounded-circle"
-                            style={{ width: '90px', height: '90px' }}
-                            alt=""
-                          />
-                        </div>
-                      </th>
-                      <td className="py-5">Cup Cakes</td>
-                      <td className="py-5">₹399</td>
-                      <td className="py-5">3</td>
-                      <td className="py-5">₹1000.00</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div className="d-flex align-items-center mt-2">
-                          <img
-                            src="https://images.unsplash.com/photo-1619685350081-854862f9cbb8?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            className="img-fluid rounded-circle"
-                            style={{ width: '90px', height: '90px' }}
-                            alt=""
-                          />
-                        </div>
-                      </th>
-                      <td className="py-5">Cup Cakes</td>
-                      <td className="py-5">₹399</td>
-                      <td className="py-5">3</td>
-                      <td className="py-5">₹1000.00</td>
-                    </tr>
-                    <tr>
-                      <th scope="row"></th>
-                      <td className="py-5">
-                        <p className="mb-0 text-dark text-uppercase py-1">TOTAL</p>
-                      </td>
-                      <td className="py-5"></td>
-                      <td className="py-5"></td>
-                      <td className="py-5">
-                        <div className="py-3 border-bottom border-top">
-                          <p className="mb-0 text-dark">₹2130</p>
-                        </div>
-                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -219,12 +180,10 @@ function BillingDetails() {
                   <button
                     type="submit"
                     className="btn border-secondary py-3 px-4 text-uppercase w-100 placeorder-btn"
-                    onClick={redirectToPayment}
                   >
                     Place Order
                   </button>
                 </Link>
-                
               </div>
             </div>
           </div>

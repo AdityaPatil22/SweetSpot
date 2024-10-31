@@ -5,6 +5,7 @@ import axios from "axios";
 import "./AddItemsForm.css";
 
 function AddItemsForm() {
+  const [file, setFile] = useState();
   const [backendError, setBackendError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -45,13 +46,13 @@ function AddItemsForm() {
       try {
         // First upload the image to Cloudinary
         const imageUrl = await uploadImageToCloudinary(values.productImage);
-        
+
         // Then submit the form data with the image URL
         const formData = {
           ...values,
           productImage: imageUrl,
         };
-        
+
         await axios.post("http://localhost:3000/api/products", formData);
         setSuccessMessage("Product added successfully!");
         formik.resetForm();
@@ -83,6 +84,7 @@ function AddItemsForm() {
   };
 
   const handleImageChange = (event) => {
+    setFile(URL.createObjectURL(event.target.files[0]));
     formik.setFieldValue("productImage", event.target.files[0]);
   };
 
@@ -151,26 +153,6 @@ function AddItemsForm() {
           </div>
 
           <div className="col-md-6">
-            <label htmlFor="productImage" className="form-label">
-              Product Image
-            </label>
-            <input
-              type="file"
-              className={`form-control ${
-                formik.touched.productImage && formik.errors.productImage
-                  ? "is-invalid"
-                  : ""
-              }`}
-              id="productImage"
-              onChange={handleImageChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.productImage && formik.errors.productImage && (
-              <p className="text-danger">{formik.errors.productImage}</p>
-            )}
-          </div>
-
-          <div className="col-md-6">
             <label htmlFor="productCategory" className="form-label">
               Product Category
             </label>
@@ -189,6 +171,34 @@ function AddItemsForm() {
               formik.errors.productCategory && (
                 <p className="text-danger">{formik.errors.productCategory}</p>
               )}
+          </div>
+
+          <div className="col-md-6">
+            <label htmlFor="productImage" className="form-label">
+              Product Image
+            </label>
+            <input
+              type="file"
+              className={`form-control ${
+                formik.touched.productImage && formik.errors.productImage
+                  ? "is-invalid"
+                  : ""
+              }`}
+              id="productImage"
+              onChange={handleImageChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.productImage && formik.errors.productImage && (
+              <p className="text-danger">{formik.errors.productImage}</p>
+            )}
+
+            {file && (
+              <img
+                src={file}
+                className="img-fluid rounded preview-image"
+                alt="Image Preview"
+              />
+            )}
           </div>
 
           <div className="col-12">
