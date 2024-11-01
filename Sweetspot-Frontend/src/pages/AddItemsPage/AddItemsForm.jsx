@@ -53,7 +53,7 @@ function AddItemsForm() {
           productImage: imageUrl,
         };
 
-        await axios.post("http://localhost:3000/api/products", formData);
+        await axios.post("https://sweetspot-p34g.onrender.com/api/products", formData);
         setSuccessMessage("Product added successfully!");
         formik.resetForm();
 

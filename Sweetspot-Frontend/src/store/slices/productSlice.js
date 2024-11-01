@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const response = await axios.get("http://localhost:3000/api/items");
+    const response = await axios.get("https://sweetspot-p34g.onrender.com/api/items");
     return response.data;
   }
 );

@@ -27,7 +27,7 @@ function SignUpPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/signup", formData);
+      await axios.post("https://sweetspot-p34g.onrender.com/api/signup", formData);
       navigate("/login");
     } catch (error) {
       if (error.response) {
