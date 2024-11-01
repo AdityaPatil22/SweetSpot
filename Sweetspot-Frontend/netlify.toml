@@ -1,4 +1,4 @@
 [[headers]]
-for = "*.js"
+for = "/dist/main.js"
   [headers.values]
   Content-Type = "application/javascript"
