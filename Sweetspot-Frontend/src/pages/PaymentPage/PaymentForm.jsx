@@ -6,7 +6,7 @@ import "./PaymentForm.css";
 
 function PaymentForm() {
   const cartTotal = useSelector(selectCartTotal);
-  const finalAmount = cartTotal - cartTotal / 10 + 50;
+  const finalAmount = Math.round(cartTotal - cartTotal / 10 + 50);
 
   const [formData, setFormData] = useState({
     cardHolderName: "",
@@ -22,8 +22,6 @@ function PaymentForm() {
       [name]: value,
     });
   };
-
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();

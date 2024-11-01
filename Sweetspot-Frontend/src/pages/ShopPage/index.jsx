@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "../../store/slices/productSlice";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import PageTitle from "../../components/PageTitle/PageTitle";
@@ -8,10 +10,15 @@ import "./style.css";
 
 function ShopPage() {
   const [activeTab, setActiveTab] = useState("All Products");
+  const dispatch = useDispatch();
 
-  const handleTabChange = (tabName) => {
-    setActiveTab(tabName);
-  };
+  const handleTabChange = (newTab) => {
+    setActiveTab(newTab);
+  }
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <div className="shop">

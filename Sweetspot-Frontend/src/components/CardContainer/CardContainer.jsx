@@ -22,8 +22,9 @@ function CardContainer({ filter }) {
 
   const filteredProducts =
     filter !== "All Products"
-      ? products.filter((product) => product.category === filter)
+      ? products.filter((product) => product.productCategory === filter)
       : products;
+
   return (
     <div className="cards-container mb-5">
       <div className="row justify-content-center">

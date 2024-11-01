@@ -18,7 +18,7 @@ function BillingDetails() {
     email: "",
   });
 
-  const finalAmount = cartTotal - cartTotal / 10 + 50;
+  const finalAmount = Math.round(cartTotal - cartTotal / 10 + 50);
 
   const handleChange = (e) => {
     setFormData({
