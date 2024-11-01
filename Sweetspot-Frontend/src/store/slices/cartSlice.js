@@ -19,7 +19,6 @@ const cartSlice = createSlice({
         state.items.push({ ...action.payload, quantity: 1 });
       }
       state.total += action.payload.price;
-      console.log("Updated cart state:", state.items);
     },
     removeFromCart: (state, action) => {
       const itemIndex = state.items.findIndex(
