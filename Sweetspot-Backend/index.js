@@ -13,8 +13,13 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://sweets-spot.netlify.app'
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173' || 'https://sweets-spot.netlify.app',
+  origin: allowedOrigins,
   credentials: true 
 }));
 
