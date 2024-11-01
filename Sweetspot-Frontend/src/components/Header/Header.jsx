@@ -18,7 +18,7 @@ function Header() {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/api/logout",
+        "https://sweetspot-p34g.onrender.com/api/logout",
         {},
         { withCredentials: true }
       );
