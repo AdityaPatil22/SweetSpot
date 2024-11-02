@@ -12,6 +12,7 @@ function SignUpPage() {
     password: "",
   });
 
+  const [userCreatedAlert, setUserCreatedAlert] = useState();
   const [backendError, setBackendError] = useState("");
 
   const navigate = useNavigate();
@@ -27,8 +28,15 @@ function SignUpPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("https://sweetspot-p34g.onrender.com/api/signup", formData);
-      navigate("/login");
+      await axios.post(
+        "https://sweetspot-p34g.onrender.com/api/signup",
+        formData
+      );
+      setUserCreatedAlert("Account created! Please Login");
+      setTimeout(() => {
+        setUserCreatedAlert("");
+        navigate("/login");
+      }, 3000);
     } catch (error) {
       if (error.response) {
         setBackendError(error.response.data.message);
@@ -45,7 +53,7 @@ function SignUpPage() {
     <div className="signup-container">
       <Header />
       <div className="signup-main-container">
-        <div className="col-sm-6 col-md-12 form-section">
+        <div className="col-sm-6 col-md-12 signup-form-section">
           <div className="signup-wrapper">
             <h2 className="signup-title">Sign Up</h2>
             <form noValidate>
@@ -98,7 +106,7 @@ function SignUpPage() {
                 />
               </div>
 
-              <div className="d-flex justify-content-between align-items-center mb-5">
+              <div className="d-flex justify-content-between align-items-center mb-4">
                 <button
                   type="submit"
                   className="btn signup-btn"
@@ -110,7 +118,7 @@ function SignUpPage() {
             </form>
 
             <p className="signup-wrapper-footer-text">
-              Already have an account?{" "}
+              Already have an account?
               <Link to="/login" className="text-reset">
                 Login here
               </Link>
@@ -120,6 +128,11 @@ function SignUpPage() {
                 {backendError}
               </div>
             )}
+          {userCreatedAlert && (
+            <div className="alert alert-success mt-4" role="alert">
+              {userCreatedAlert}
+            </div>
+          )}
           </div>
         </div>
       </div>

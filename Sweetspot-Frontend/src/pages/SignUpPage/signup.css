@@ -9,18 +9,18 @@
   align-items: center;
 }
 
-.form-section {
+.signup-form-section {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
   border-radius: 10px;
-  height: 450px;
+  height: 480px;
   width: 400px;
 }
 
 @media (max-width: 767px) {
-  .form-section {
+  .signup-form-section {
     padding: 35px;
   }
 }
