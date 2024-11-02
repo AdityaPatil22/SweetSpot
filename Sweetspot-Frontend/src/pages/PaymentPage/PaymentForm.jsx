@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useSelector } from "react-redux";
-import { selectCartTotal } from "../../store/slices/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectCartTotal, clearCart } from "../../store/slices/cartSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
@@ -43,6 +43,7 @@ const PaymentValidationSchema = Yup.object().shape({
 function PaymentForm() {
   const [payAlert, setPayAlert] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cartTotal = useSelector(selectCartTotal);
   const finalAmount = Math.round(cartTotal - cartTotal / 10 + 50);
 
@@ -56,6 +57,7 @@ function PaymentForm() {
   const handleSubmit = (values, { setSubmitting }) => {
     try {
       setSubmitting(false);
+      dispatch(clearCart());
       setPayAlert("Payment Successful");
       setTimeout(() => {
         setPayAlert("");
