@@ -53,6 +53,15 @@ function Header() {
                 <></>
               )}
             </li>
+            <li className="nav-item">
+              {isLoggedIn ? (
+                <Link to="/orders" className="nav-link">
+                  Orders
+                </Link>
+              ) : (
+                <></>
+              )}
+            </li>
           </ul>
 
           <ul className="navbar-nav ms-auto mb-2 mb-md-0">
