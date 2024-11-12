@@ -26,14 +26,6 @@ app.use(cors({
 
 app.use(express.json());
 
-app.post("/api/products", addItem);
-app.post("/api/signup", signUp)
-app.post("/api/login", login)
-app.post("/api/logout", logout)
-app.post("/api/shipping", addShippingDetails)
-
-app.get('/api/items', getItemData);
-
 app.listen(process.env.PORT, async () => {
   try {
     await mongoConnect();
@@ -42,3 +34,12 @@ app.listen(process.env.PORT, async () => {
     console.log(error);
   }
 });
+
+app.post("/api/products", addItem);
+app.post("/api/signup", signUp)
+app.post("/api/login", login)
+app.post("/api/logout", logout)
+app.post("/api/shipping", addShippingDetails)
+
+app.get('/api/items', getItemData);
+
