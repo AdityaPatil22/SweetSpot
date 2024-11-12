@@ -66,7 +66,6 @@ function BillingDetails() {
           withCredentials: true,
         }
       );
-
       if (response.data) {
         localStorage.setItem("currentOrder", JSON.stringify(orderData));
         navigate("/payment");
