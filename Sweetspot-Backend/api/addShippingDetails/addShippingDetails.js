@@ -2,7 +2,17 @@ import shippingDetails from "../../schema/shippingDetailsSchema.js";
 
 const addShippingDetails = async (req, res) => {
   try {
-    const { firstName, lastName, address, city, zipcode, mobile } = req.body;
+    const {
+      firstName,
+      lastName,
+      address,
+      city,
+      zipcode,
+      mobile,
+      cartTotal,
+      orderDate,
+      orderStatus,
+    } = req.body;
     const shippingDetailsData = new shippingDetails({
       firstName,
       lastName,
@@ -10,6 +20,9 @@ const addShippingDetails = async (req, res) => {
       city,
       zipcode,
       mobile,
+      cartTotal,
+      orderDate,
+      orderStatus,
     });
     await shippingDetailsData.save();
     return res
@@ -20,4 +33,4 @@ const addShippingDetails = async (req, res) => {
   }
 };
 
-export default addShippingDetails
+export default addShippingDetails;
