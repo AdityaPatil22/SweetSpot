@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
 
 const shippingDetailsSchema = new mongoose.Schema({
-  firstName: { type: String, require: true },
-  lastName: { type: String, require: true },
-  address: { type: String, require: true },
-  city: { type: String, require: true },
-  zipcode: { type: Number, require: true },
-  mobile: { type: Number, require: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  address: { type: String, required: true },
+  city: { type: String, required: true },
+  zipcode: { type: Number, required: true },
+  mobile: { type: Number, required: true },
+  cartTotal: { type: Number, required: true },
+  orderDate: { type: String, required: true },
+  orderStatus: { type: String, required: true },
 });
 
-export default mongoose.model("ShipingDetails", shippingDetailsSchema);
+export default mongoose.model("ShippingDetails", shippingDetailsSchema);
