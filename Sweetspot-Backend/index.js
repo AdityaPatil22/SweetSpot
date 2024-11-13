@@ -7,6 +7,7 @@ import signUp from "./api/authentication/signUp.js"
 import login from "./api/authentication/login.js";
 import logout from "./api/authentication/logout.js";
 import getItemData from "./api/getItemData/getItemData.js";
+import getShippingDetails from "./api/getShippingDetails/getShippingDetails.js";
 import addShippingDetails from "./api/addShippingDetails/addShippingDetails.js";
 
 dotenv.config();
@@ -42,4 +43,5 @@ app.post("/api/logout", logout)
 app.post("/api/shipping", addShippingDetails)
 
 app.get('/api/items', getItemData);
+app.get('/api/shippingdetails', getShippingDetails);
 
