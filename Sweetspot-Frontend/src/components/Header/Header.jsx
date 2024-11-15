@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/slices/authSlice";
+import { logout, selectIsSuperAdmin } from "../../store/slices/authSlice";
 import { selectCartItems , clearCart } from "../../store/slices/cartSlice";
 
 import axios from "axios";
@@ -11,6 +11,7 @@ function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems)
+  const isSuperAdmin = useSelector(selectIsSuperAdmin);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const totalQuantity = cartItems.length;
@@ -45,7 +46,7 @@ function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              {isLoggedIn ? (
+              {isLoggedIn && isSuperAdmin ? (
                 <Link to="/add-items" className="nav-link">
                   Add Items
                 </Link>
@@ -54,7 +55,7 @@ function Header() {
               )}
             </li>
             <li className="nav-item">
-              {isLoggedIn ? (
+              {isLoggedIn && isSuperAdmin  ? (
                 <Link to="/orders" className="nav-link">
                   Orders
                 </Link>

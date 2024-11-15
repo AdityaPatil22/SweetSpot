@@ -10,6 +10,7 @@ import PaymentPage from "./pages/PaymentPage";
 import AddItems from "./pages/AddItemsPage/AddItems";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+import SuperAdminRoute from "./components/protectedRoute/superAdminRoute"
 
 const router = createBrowserRouter([
   {
@@ -55,17 +56,17 @@ const router = createBrowserRouter([
   {
     path: "add-items",
     element: (
-      <ProtectedRoute>
+      <SuperAdminRoute>
         <AddItems />
-      </ProtectedRoute>
+      </SuperAdminRoute>
     ),
   },
   {
     path: "orders",
     element: (
-      <ProtectedRoute>
+      <SuperAdminRoute>
         <OrdersPage />
-      </ProtectedRoute>
+      </SuperAdminRoute>
     ),
   },
 ]);

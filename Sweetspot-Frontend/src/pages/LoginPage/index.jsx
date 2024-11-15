@@ -32,7 +32,7 @@ function LoginPage() {
       const response = await axios.post("https://sweetspot-p34g.onrender.com/api/login", formData, {
         withCredentials: true,
       });
-      dispatch(login(response.data.token));
+      dispatch(login({ token: response.data.token, role: response.data.role }));
       navigate("/");
     } catch (error) {
       if (error.response) {
