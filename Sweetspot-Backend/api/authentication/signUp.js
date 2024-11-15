@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import User from "../../schema/userSchema.js";
 
 const signUp = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -16,6 +16,7 @@ const signUp = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      role,
     });
 
     await user.save();

@@ -10,6 +10,7 @@ function SignUpPage() {
     name: "",
     email: "",
     password: "",
+    role: "user",
   });
 
   const [userCreatedAlert, setUserCreatedAlert] = useState();
@@ -128,11 +129,11 @@ function SignUpPage() {
                 {backendError}
               </div>
             )}
-          {userCreatedAlert && (
-            <div className="alert alert-success mt-4" role="alert">
-              {userCreatedAlert}
-            </div>
-          )}
+            {userCreatedAlert && (
+              <div className="alert alert-success mt-4" role="alert">
+                {userCreatedAlert}
+              </div>
+            )}
           </div>
         </div>
       </div>
