@@ -9,6 +9,7 @@ import CartPage from "./pages/CartPage";
 import PaymentPage from "./pages/PaymentPage";
 import AddItems from "./pages/AddItemsPage/AddItems";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
+import ProductPage from "./pages/ProductPage/ProductPage"
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
 import SuperAdminRoute from "./components/protectedRoute/superAdminRoute"
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "shop",
     element: <ShopPage />,
+  },
+  {
+    path: "/product/:id",
+    element: <ProductPage />,
   },
   {
     path: "checkout",

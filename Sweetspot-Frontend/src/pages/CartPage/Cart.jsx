@@ -31,9 +31,9 @@ function Cart() {
   return (
     <div className="container-fluid py-5">
       <div className="container py-5">
-        <div className="table-responsive scrollable-table">
-          <table className="table">
-            <thead className="sticky-thead">
+        <div className="table-container">
+          <table className="table align-middle text-center">
+            <thead className="sticky-thead bg-light">
               <tr>
                 <th scope="col">Products</th>
                 <th scope="col">Name</th>
@@ -44,30 +44,31 @@ function Cart() {
               </tr>
             </thead>
             <tbody>
-              {cartItems == 0 ? (
-                <div className="fw-bold mt-4">No Items in the cart</div>
+              {cartItems.length === 0 ? (
+                <tr>
+                  <td colSpan="6" className="fw-bold text-center h4">
+                    No Items in the cart
+                  </td>
+                </tr>
               ) : (
                 cartItems.map((item) => (
                   <tr key={item.id}>
-                    <th scope="row">
+                    <td>
                       <img
                         src={item.imageUrl}
-                        className="img-fluid me-5 rounded-circle"
+                        className="img-fluid rounded-circle"
                         style={{ width: "80px", height: "80px" }}
                         alt={item.title}
                       />
-                    </th>
-                    <td>
-                      <p className="mb-0 mt-4">{item.title}</p>
                     </td>
                     <td>
-                      <p className="mb-0 mt-4">₹ {item.price}</p>
+                      <p className="mb-0">{item.title}</p>
                     </td>
                     <td>
-                      <div
-                        className="input-group quantity mt-4"
-                        style={{ width: "100px" }}
-                      >
+                      <p className="mb-0">₹ {item.price}</p>
+                    </td>
+                    <td style={{ width: "130px" }}>
+                      <div className="d-flex align-items-center justify-content-center">
                         <button
                           className="btn btn-sm btn-minus rounded-circle bg-light border"
                           onClick={() => handleDecrement(item.id)}
@@ -76,7 +77,7 @@ function Cart() {
                         </button>
                         <input
                           type="text"
-                          className="form-control form-control-sm text-center border-0"
+                          className="form-control form-control-sm text-center border-0 mx-1"
                           value={item.quantity}
                           readOnly
                         />
@@ -89,11 +90,11 @@ function Cart() {
                       </div>
                     </td>
                     <td>
-                      <p className="mb-0 mt-4">₹{item.price * item.quantity}</p>
+                      <p className="mb-0">₹ {item.price * item.quantity}</p>
                     </td>
                     <td>
                       <button
-                        className="btn btn-md rounded-circle bg-light border mt-4"
+                        className="btn btn-md rounded-circle bg-light border"
                         onClick={() => handleRemove(item.id)}
                       >
                         <i className="fa fa-times text-danger"></i>
@@ -105,39 +106,32 @@ function Cart() {
             </tbody>
           </table>
         </div>
-        <hr className="hr-margin" />
+
+        <hr />
         <div className="row g-4 justify-content-center">
-          <div className="col-sm-8 col-md-7 col-lg-6 col-xl-4">
-            <div className="bg-light rounded checkout-box">
-              <div className="p-4">
-                <h1 className="display-6 mb-4 fw-bold d-flex justify-content-center">
-                  Cart <span className="fw-normal">Total</span>
-                </h1>
-                <div className="d-flex justify-content-between mb-4">
-                  <h5 className="mb-0 me-4">Discount :</h5>
-                  <p className="mb-0">10 %</p>
-                </div>
-                <div className="d-flex justify-content-between mb-4">
-                  <h5 className="mb-0 me-4">Shipping Charges :</h5>
-                  <p className="mb-0">₹ 50</p>
-                </div>
+          <div className="col-lg-4">
+            <div className="bg-light rounded checkout-box p-4">
+              <h1 className="display-6 mb-4 fw-bold text-center">
+                Cart <span className="fw-normal">Total</span>
+              </h1>
+              <div className="d-flex justify-content-between mb-4">
+                <h5>Discount :</h5>
+                <p>10 %</p>
               </div>
-              <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                <h5 className="mb-0 ps-4 me-4">Total</h5>
-                {cartTotal == 0 ? (
-                  <p className="mb-0 pe-4">₹ 0</p>
-                ) : (
-                  <p className="mb-0 pe-4">₹{finalAmount}</p>
-                )}
+              <div className="d-flex justify-content-between mb-4">
+                <h5>Shipping Charges :</h5>
+                <p>₹ 50</p>
               </div>
-              {cartItems == 0 ? (
-                <div className="h4 d-flex justify-content-center mb-4 ">
-                  Your cart is empty
-                </div>
+              <div className="py-2 border-top border-bottom d-flex justify-content-between">
+                <h5>Total</h5>
+                <p>₹ {cartTotal === 0 ? 0 : finalAmount}</p>
+              </div>
+              {cartItems.length === 0 ? (
+                <div className="h4 text-center mt-4 ">Your cart is empty</div>
               ) : (
                 <Link to="/checkout">
-                  <button className="btn border-secondary rounded-pill px-3 py-3 text-uppercase mb-4 ms-4 checkout-btn">
-                    Proceed Checkout
+                  <button className="btn btn-primary w-100 rounded-pill">
+                    Proceed to Checkout
                   </button>
                 </Link>
               )}

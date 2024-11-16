@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../../store/slices/productSlice";
 import Card from "../Card/Card";
 import PropTypes from "prop-types";
@@ -11,6 +12,7 @@ CardContainer.propTypes = {
 
 function CardContainer({ filter }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const products = useSelector((state) => state.products.items || []);
   const productStatus = useSelector((state) => state.products.status);
 
@@ -25,6 +27,10 @@ function CardContainer({ filter }) {
       ? products.filter((product) => product.productCategory === filter)
       : products;
 
+  const handleCardClick = (id) => {
+    navigate(`/product/${id}`);
+  };
+
   return (
     <div className="cards-container mb-5">
       <div className="row justify-content-center">
@@ -38,6 +44,7 @@ function CardContainer({ filter }) {
                   title={product.productName}
                   description={product.productDescription}
                   price={product.productPrice}
+                  onClick={() => handleCardClick(product._id)}
                 />
               </div>
             ))}
