@@ -14,7 +14,7 @@
   padding: 10px;
 }
 
-.logo:hover{
+.logo:hover {
   cursor: pointer;
 }
 
@@ -22,15 +22,6 @@
   margin-left: 20px;
   height: 100px;
   cursor: pointer;
-}
-
-.navbar-brand:hover {
-  animation: pulse 1s ease-in-out infinite;
-}
-
-.fa-cake-candles {
-  color: #222222;
-  font-size: 2rem;
 }
 
 .nav-link {
@@ -41,7 +32,7 @@
 }
 
 .nav-link:hover {
-  background-color: #222222;
+  background-color: #284b63;
   color: white !important;
   border-radius: 2rem;
   cursor: pointer !important;
@@ -50,23 +41,12 @@
 }
 
 .nav-link-icons {
-  color: #222222 !important;
   font-size: 23px;
   transition: transform 0.1s ease, color 0.1s ease, font-size 0.1s ease;
 }
 
 .nav-link-icons:hover {
   cursor: pointer;
-  transform: scale(1.2) rotate(10deg);
-  font-size: 28px;
-}
-
-.buttonss {
-  border: 1.5px solid black;
-  border-radius: 1.5rem;
-  margin-left: 0.5rem;
-  display: flex;
-  align-items: center;
 }
 
 .dropdown-menu {
@@ -92,7 +72,7 @@
   cursor: pointer !important;
 }
 
-.nav-item{
+.nav-item {
   margin-left: 15px;
   font-size: 17px;
 }
@@ -104,4 +84,8 @@
 
 .dropdown-toggle::after {
   display: none;
+}
+
+.bg-danger {
+  background-color: #d90429 !important;
 }

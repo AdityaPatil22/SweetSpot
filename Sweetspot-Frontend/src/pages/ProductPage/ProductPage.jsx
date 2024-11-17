@@ -38,8 +38,8 @@ function ProductPage() {
       <Header />
       <PageTitle title={product.productCategory} />
       <section className="py-5">
-        <div className="container-fluid  col-8">
-          <div className="row gx-5">
+        <div className="container-fluid  col-10">
+          <div className="row gx-5 d-flex justify-content-evenly">
             <aside className="col-lg-5">
               <div className="border rounded-4 mb-3 d-flex justify-content-center">
                 <img
