@@ -33,19 +33,19 @@
 
 .placeorder-btn {
     background-color: white !important;
-    color: #9e2a2b !important;
-    border-color: #9e2a2b !important;
+    color: #284b63 !important;
+    border-color: #284b63 !important;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .placeorder-btn:hover {
-    background-color: #9e2a2b !important;
+    background-color: #284b63 !important;
     color: white !important;
-    border-color: #9e2a2b !important;
+    border-color: #284b63 !important;
 }
 
 .checkbox-check {
-    background-color: #9e2a2b !important;
+    background-color: #284b63 !important;
     transition: background-color 0.3s;
 }
 

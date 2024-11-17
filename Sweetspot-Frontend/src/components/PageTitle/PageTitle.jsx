@@ -9,7 +9,7 @@ function PageTitle({title}){
     return (
         <div className="page-title">
             <div className="container-fluid page-header py-5">
-                <div className="text-center text-white display-6 cart-text">{title}</div>
+                <div className="text-center display-6 cart-text">{title}</div>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 .nav-filters {
-    background-color: #c9ada7;
+    background-color: #89c2d9;
     text-decoration: none;
     transition: transform 0.3s ease-in-out; 
 }
@@ -9,6 +9,6 @@
 }
 
 .nav-filters.active {
-    background-color: #9e2a2b;
+    background-color: #284b63;
     color: #ffffff;
 }

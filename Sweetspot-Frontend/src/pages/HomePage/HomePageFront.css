@@ -1,7 +1,7 @@
 .primary-text{
     font-size: 40px;
     font-weight: 500;
-    color: #780000;
+    color: #284b63;
 }
 .secondary-text{
     font-weight: 500;
@@ -12,6 +12,8 @@
 .hero-header {
     position: relative;
     height: 100vh;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .hero-header::before {
@@ -26,4 +28,8 @@
     background-size: cover;
     filter: blur(6px);
     z-index: -1;
+}
+
+.heading-container{
+    margin-top: 150px;
 }

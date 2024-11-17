@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectIsSuperAdmin } from "../../store/slices/authSlice";
-import { selectCartItems , clearCart } from "../../store/slices/cartSlice";
+import { selectCartItems, clearCart } from "../../store/slices/cartSlice";
 
 import axios from "axios";
 import SweetSpotLogo from "../../assets/Images/SweetSpotLogo.png";
@@ -10,7 +10,7 @@ import "./Header.css";
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const cartItems = useSelector(selectCartItems)
+  const cartItems = useSelector(selectCartItems);
   const isSuperAdmin = useSelector(selectIsSuperAdmin);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
@@ -24,7 +24,7 @@ function Header() {
         { withCredentials: true }
       );
       dispatch(logout());
-      dispatch(clearCart())
+      dispatch(clearCart());
       localStorage.removeItem("token");
       navigate("/login");
     } catch (error) {
@@ -32,12 +32,14 @@ function Header() {
     }
   };
 
+  const handleNavigate = () => {
+    navigate('/');
+  };
+
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
       <div className="container-fluid">
-        <Link to="/">
-          <img src={SweetSpotLogo} className="navbar-brand" alt="Logo" />
-        </Link>
+        <p className="h1 logo" onClick={handleNavigate}>SweetSpot</p>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
             <li className="nav-item">
@@ -55,7 +57,7 @@ function Header() {
               )}
             </li>
             <li className="nav-item">
-              {isLoggedIn && isSuperAdmin  ? (
+              {isLoggedIn && isSuperAdmin ? (
                 <Link to="/orders" className="nav-link">
                   Orders
                 </Link>
@@ -76,7 +78,10 @@ function Header() {
                   className="fas fa-cart-shopping"
                   style={{ color: "#000000" }}
                 ></i>
-                <span className="top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: "0.7rem"}}>
+                <span
+                  className="top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  style={{ fontSize: "0.7rem" }}
+                >
                   {totalQuantity}
                 </span>
               </Link>
