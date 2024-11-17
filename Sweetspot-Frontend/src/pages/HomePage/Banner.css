@@ -5,15 +5,16 @@
     color: black;
 }
 
-.banner .banner-btn:hover {
-    background: #6f1d1b;
-}
-
 .banner-btn{
     color: white;
-    background-color: #6f1d1b;
+    background-color: #284b63;
     border-color: white;
 }
+
+.banner .banner-btn:hover {
+    background: #ffc300;
+}
+
 
 .banner-btn:hover{
     color: white !important;

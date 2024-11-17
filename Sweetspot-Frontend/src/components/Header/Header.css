@@ -4,6 +4,20 @@
   position: fixed;
 }
 
+.logo {
+  font-family: "Tangerine", cursive;
+  font-weight: 900;
+  font-size: 60px;
+  font-style: normal;
+  color: #284b63;
+  letter-spacing: 2px;
+  padding: 10px;
+}
+
+.logo:hover{
+  cursor: pointer;
+}
+
 .navbar-brand {
   margin-left: 20px;
   height: 100px;
@@ -67,7 +81,7 @@
 }
 
 .dropdown-menu a {
-  color: #9e2a2b;
+  color: #284b63;
   text-decoration: none;
   display: block;
   padding: 8px 20px;
@@ -76,6 +90,11 @@
 .dropdown-menu a:hover {
   background-color: #f4f4f4;
   cursor: pointer !important;
+}
+
+.nav-item{
+  margin-left: 15px;
+  font-size: 17px;
 }
 
 .nav-item:hover .dropdown-menu {

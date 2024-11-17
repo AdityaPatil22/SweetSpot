@@ -16,16 +16,15 @@ function ProductFilters({ activeTab, onTabChange }) {
           <ul className="nav nav-pills d-inline-flex text-center mb-5">
             {categories.map((category) => (
               <li className="nav-item" key={category}>
-                <a
-                  className={`d-flex m-2 py-2 rounded-pill nav-filters ${activeTab === category ? 'active' : ''}`}
+                <button
+                  className={`d-flex m-2 py-2 border-0 rounded-pill nav-filters ${activeTab === category ? 'active' : ''}`}
                   onClick={(e) => {
                     e.preventDefault();
                     onTabChange(category);
                   }}
-                  href="#"
                 >
                   <span className="text-light" style={{ width: '130px' }}>{category}</span>
-                </a>
+                </button>
               </li>
             ))}
           </ul>
