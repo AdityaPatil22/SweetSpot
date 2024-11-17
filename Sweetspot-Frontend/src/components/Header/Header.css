@@ -1,14 +1,18 @@
+/* Navbar styles */
 .navbar {
   height: 5rem;
   width: 100%;
   position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: white;
 }
 
 .logo {
   font-family: "Tangerine", cursive;
   font-weight: 900;
   font-size: 60px;
-  font-style: normal;
   color: #284b63;
   letter-spacing: 2px;
   padding: 10px;
@@ -88,4 +92,55 @@
 
 .bg-danger {
   background-color: #d90429 !important;
+}
+
+/* Responsive Styles for Mobile */
+@media screen and (max-width: 767px) {
+  .navbar {
+    height: auto;
+  }
+
+  .logo {
+    font-size: 40px;
+    padding: 5px;
+  }
+
+  .navbar-nav {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 10px 0;
+  }
+
+  .nav-link {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    display: block;
+    box-shadow: none;
+    padding: 5px 0;
+  }
+
+  .nav-link-icons {
+    font-size: 20px;
+  }
+
+  .navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-toggler {
+    border-color: #284b63;
+  }
+
+  .navbar-toggler-icon {
+    background-color: #284b63;
+  }
 }
