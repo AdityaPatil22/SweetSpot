@@ -77,7 +77,7 @@ function Header() {
                   style={{ color: "#000000" }}
                 ></i>
                 <span
-                  className="top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  className="position-sticky top-0 translate-middle badge rounded-pill bg-danger"
                   style={{ fontSize: "0.7rem" }}
                 >
                   {totalQuantity}
