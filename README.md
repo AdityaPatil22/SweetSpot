@@ -52,20 +52,25 @@ docker pull yourusername/sweetspot-frontend:latest
 docker pull yourusername/sweetspot-backend:latest
 
 # Create a docker-compose.yml file
-version: '3.8'
+version: "3.8"
 services:
-  frontend:
-    image: yourusername/sweetspot-frontend:latest
+  backend:
+    build:
+      context: ./Sweetspot-Backend
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
-  backend:
-    image: yourusername/sweetspot-backend:latest
-    ports:
-      - "5000:5000"
     environment:
-      - MONGODB_URI=your_mongodb_uri
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - ./Sweetspot-Backend:/app
+  frontend:
+    build:
+      context: ./Sweetspot-Frontend
+    ports:
+      - "5173:80"
+    volumes:
+      - ./Sweetspot-Frontend:/app
 
 # Run the application
 docker-compose up
