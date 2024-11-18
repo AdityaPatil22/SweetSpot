@@ -9,7 +9,6 @@ Docker Compose
 
 ## Running the Application
 Clone the Repository:
-
 bash
 Copy code
 git clone https://github.com/<your-username>/<your-repo>.git
