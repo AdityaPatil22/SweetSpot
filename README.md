@@ -35,9 +35,9 @@ SweetSpot is a full-stack e-commerce application built to manage products, order
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
-- Docker
-- Docker Compose
-- Git
+- [Docker](https://docs.docker.com/engine/install/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Git](https://git-scm.com/downloads)
 
 ## Project Setup
 
