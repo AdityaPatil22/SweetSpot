@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./Sweetspot-Backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    volumes:
+      - ./Sweetspot-Backend:/app
+  frontend:
+    build:
+      context: ./Sweetspot-Frontend
+    ports:
+      - "5173:80"
+    volumes:
+      - ./Sweetspot-Frontend:/app
