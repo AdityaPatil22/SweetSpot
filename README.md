@@ -46,8 +46,8 @@ Before you begin, ensure you have the following installed:
 Start by cloning the repository to your local machine:
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone <link>
+cd <cloned-repo>
 ```
 
 ### 2. Running the Application with Docker Compose
@@ -69,7 +69,7 @@ docker-compose down
 ### 3. Accessing the Application
 
 Once the containers are running, you can access the application via the following URLs:
-- **Frontend**: http://localhost:3000
+- **Frontend**: http://localhost:5137
 - **Backend API**: http://localhost:5000
 
 ## Project Directory Structure
