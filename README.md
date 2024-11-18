@@ -8,10 +8,10 @@ SweetSpot is a full-stack e-commerce application built to manage products, order
 - [Technologies Used](#technologies-used)
 - [Prerequisites](#prerequisites)
 - [Project Setup](#project-setup)
+  - [Using Docker Hub Images](#using-docker-hub-images)
+  - [Building Locally](#building-locally)
 - [Project Directory Structure](#project-directory-structure)
 - [Troubleshooting](#troubleshooting)
-- [Known Issues](#known-issues)
-
 ## Features
 
 ### Frontend
@@ -24,13 +24,14 @@ SweetSpot is a full-stack e-commerce application built to manage products, order
 
 ### Dockerized Setup
 - Simplified development and deployment using Docker
+- Pre-built Docker images available on Docker Hub
 
 ## Technologies Used
 
 - **Frontend**: React, Vite
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
-- **Containerization**: Docker, Docker Compose
+- **Containerization**: [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/)
 
 ## Prerequisites
 
@@ -41,24 +42,55 @@ Before you begin, ensure you have the following installed:
 
 ## Project Setup
 
-### 1. Cloning the Repository
+### Using Docker Hub Images
+
+The easiest way to get started is by using our pre-built Docker images:
+
+```bash
+# Pull the images
+docker pull yourusername/sweetspot-frontend:latest
+docker pull yourusername/sweetspot-backend:latest
+
+# Create a docker-compose.yml file
+version: '3.8'
+services:
+  frontend:
+    image: yourusername/sweetspot-frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+  backend:
+    image: yourusername/sweetspot-backend:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=your_mongodb_uri
+
+# Run the application
+docker-compose up
+```
+
+### Building Locally
+
+#### 1. Cloning the Repository
 
 Start by cloning the repository to your local machine:
 
 ```bash
-git clone <link>
-cd <cloned-repo>
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
 ```
 
-### 2. Running the Application with Docker Compose
+#### 2. Running the Application with Docker Compose
 
-#### Step 1: Build and Start Containers
+##### Step 1: Build and Start Containers
 
 ```bash
 docker-compose up --build
 ```
 
-#### Step 2: Stop the Containers
+##### Step 2: Stop the Containers
 
 To stop the containers after running:
 
@@ -70,7 +102,7 @@ docker-compose down
 
 Once the containers are running, you can access the application via the following URLs:
 - **Frontend**: http://localhost:5137
-- **Backend API**: http://localhost:5000
+- **Backend API**: http://localhost:3000
 
 ## Project Directory Structure
 
@@ -91,6 +123,20 @@ Once the containers are running, you can access the application via the followin
 └── README.md
 ```
 
+## Docker Images
+
+Our Docker images are available on Docker Hub:
+
+- Frontend Image: `yourusername/sweetspot-frontend`
+  - Tags:
+    - `latest`: Most recent stable version
+    - `v1.0.0`: Initial release
+    
+- Backend Image: `yourusername/sweetspot-backend`
+  - Tags:
+    - `latest`: Most recent stable version
+    - `v1.0.0`: Initial release
+
 ## Troubleshooting
 
 ### Backend Issues
@@ -108,8 +154,8 @@ docker-compose up
 
 - Use `docker-compose logs` to inspect logs for any container errors
 - Ensure the ports specified in `docker-compose.yml` are available on your machine
-
-## Known Issues
-
-1. **Large Docker Image Sizes**: Consider using `.dockerignore` to exclude unnecessary files during the build process
-2. **Frontend Caching Issues**: Clear your browser cache if changes to the frontend code aren't reflected after rebuilding
+- If using Docker Hub images, ensure you have the latest versions:
+  ```bash
+  docker pull yourusername/sweetspot-frontend:latest
+  docker pull yourusername/sweetspot-backend:latest
+  ```
