@@ -132,12 +132,12 @@ Once the containers are running, you can access the application via the followin
 
 Our Docker images are available on Docker Hub:
 
-- Frontend Image: `yourusername/sweetspot-frontend`
+- Frontend Image: `aditya7649/sweetspot-frontend`
   - Tags:
     - `latest`: Most recent stable version
     - `v1.0.0`: Initial release
     
-- Backend Image: `yourusername/sweetspot-backend`
+- Backend Image: `aditya7649/sweetspot-backend`
   - Tags:
     - `latest`: Most recent stable version
     - `v1.0.0`: Initial release
@@ -160,6 +160,7 @@ docker-compose up
 - Ensure the ports specified in `docker-compose.yml` are available on your machine
 - If using Docker Hub images, ensure you have the latest versions:
   ```bash
-  docker pull yourusername/sweetspot-frontend:latest
-  docker pull yourusername/sweetspot-backend:latest
+  docker pull aditya7649/sweetspot-frontend:latest
+  docker pull aditya7649/sweetspot-backend:latest
   ```
+  -https://roadmap.sh/projects/scalable-ecommerce-platform
