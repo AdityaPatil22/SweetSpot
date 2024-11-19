@@ -48,8 +48,8 @@ The easiest way to get started is by using our pre-built Docker images:
 
 ```bash
 # Pull the images
-docker pull yourusername/sweetspot-frontend:latest
-docker pull yourusername/sweetspot-backend:latest
+docker pull aditya7649/sweetspot-frontend:latest
+docker pull aditya7649/sweetspot-backend:latest
 
 # Create a docker-compose.yml file
 version: "3.8"
@@ -84,7 +84,7 @@ Start by cloning the repository to your local machine:
 
 ```bash
 git clone git@github.com:AdityaP7649/SweetSpot.git
-cd <your-repo>
+cd SweetSpot
 ```
 
 #### 2. Running the Application with Docker Compose
@@ -147,7 +147,6 @@ Our Docker images are available on Docker Hub:
 ### Backend Issues
 
 - **Error: `ENOENT: no such file or directory, open '/app/package.json'`**: Ensure the `backend` directory contains a valid `package.json` file. If it's missing, recreate it and rebuild the containers.
-
 - **Missing Dependencies**: If required dependencies are missing, update your `Dockerfile` to include them, rebuild the image, and restart the container:
 
 ```bash
