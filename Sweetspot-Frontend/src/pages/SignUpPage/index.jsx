@@ -15,6 +15,7 @@ function SignUpPage() {
 
   const [userCreatedAlert, setUserCreatedAlert] = useState();
   const [backendError, setBackendError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
   const navigate = useNavigate();
 
@@ -48,6 +49,10 @@ function SignUpPage() {
         setBackendError("");
       }, 2000);
     }
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword); // Toggle the password visibility
   };
 
   return (
@@ -94,17 +99,36 @@ function SignUpPage() {
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  className="form-control"
-                  placeholder="Password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                  minLength="6"
-                />
+                <div
+                  className="password-wrapper"
+                  style={{ position: "relative" }}
+                >
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    id="password"
+                    className="form-control"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                    minLength="6"
+                    style={{ paddingRight: "40px" }}
+                  />
+                  <i
+                    className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}
+                    onClick={handleShowPassword}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                      color: "#000000",
+                    }}
+                    title={showPassword ? "Hide password" : "Show password"}
+                  ></i>
+                </div>
               </div>
 
               <div className="d-flex justify-content-between align-items-center mb-4">

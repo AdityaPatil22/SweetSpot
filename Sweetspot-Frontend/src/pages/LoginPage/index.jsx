@@ -12,7 +12,7 @@ function LoginPage() {
     email: "",
     password: "",
   });
-
+  const [showPassword, setShowPassword] = useState(false);
   const [backendError, setBackendError] = useState("");
 
   const navigate = useNavigate();
@@ -29,9 +29,13 @@ function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://sweetspot-p34g.onrender.com/api/login", formData, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        "https://sweetspot-p34g.onrender.com/api/login",
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
       dispatch(login({ token: response.data.token, role: response.data.role }));
       navigate("/");
     } catch (error) {
@@ -44,6 +48,10 @@ function LoginPage() {
         setBackendError("");
       }, 2000);
     }
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -74,15 +82,36 @@ function LoginPage() {
                   <label htmlFor="password" className="sr-only">
                     Password
                   </label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    className="form-control"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
+                  <div
+                    className="password-wrapper"
+                    style={{ position: "relative" }}
+                  >
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      id="password"
+                      className="form-control"
+                      placeholder="Password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      style={{ paddingRight: "40px" }}
+                    />
+                    <i
+                      className={
+                        showPassword ? "fas fa-eye-slash" : "fas fa-eye"
+                      }
+                      onClick={handleShowPassword}
+                      style={{
+                        position: "absolute",
+                        right: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        cursor: "pointer",
+                        color: "#000000",
+                      }}
+                      title={showPassword ? "Hide password" : "Show password"}
+                    ></i>
+                  </div>
                 </div>
 
                 <div className="d-flex justify-content-between align-items-center mb-5">
