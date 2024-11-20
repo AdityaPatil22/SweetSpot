@@ -4,6 +4,7 @@ import { selectCartTotal, clearCart } from "../../store/slices/cartSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import "./PaymentForm.css"
 
 const PaymentValidationSchema = Yup.object().shape({
   cardHolderName: Yup.string()

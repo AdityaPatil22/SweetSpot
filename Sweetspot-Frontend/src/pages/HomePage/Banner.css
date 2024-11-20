@@ -9,6 +9,11 @@
   color: #ffc300;
 }
 
+.banner-image{
+  width: 100% !important;
+  height: 500px !important;
+}
+
 .banner-btn {
   color: white;
   background-color: #284b63;
