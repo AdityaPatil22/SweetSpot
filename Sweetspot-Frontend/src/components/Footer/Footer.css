@@ -1,3 +1,7 @@
-footer{
-    background-color: #284b63;
+footer {
+  background-color: #284b63;
+}
+
+.footer-btn:hover {
+  background-color: #14213d !important;
 }
