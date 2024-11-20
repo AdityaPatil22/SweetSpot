@@ -1,4 +1,4 @@
-.login-main-container {
+.signup-main-container {
   background-image: url("https://images.unsplash.com/photo-1432821579285-1b649e5b1ce3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   background-repeat: no-repeat;
@@ -9,31 +9,38 @@
   align-items: center;
 }
 
-.form-section {
+.signup-form-section {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
   border-radius: 10px;
-  height: 400px;
+  height: 480px;
   width: 400px;
 }
-@media (max-width: 767px) {
-  .form-section {
-    padding: 35px;
-  }
+
+.password-wrapper {
+  position: relative;
 }
 
-.login-wrapper {
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.password-wrapper i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #000000;
+}
+
+.signup-wrapper {
   width: 300px;
   max-width: 100%;
 }
-@media (max-width: 575px) {
-  .login-wrapper {
-    width: 100%;
-  }
-}
-.login-wrapper .form-control {
+.signup-wrapper .form-control {
   border: 0;
   border-bottom: 1px solid #bdbdbd;
   border-radius: 0;
@@ -43,7 +50,7 @@
   margin-bottom: 7px;
 }
 
-.login-title {
+.signup-title {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 30px;
@@ -51,7 +58,7 @@
   justify-content: center;
 }
 
-.login-btn {
+.signup-btn {
   margin-top: 17px;
   padding: 10px 25px;
   background-color: #000;
@@ -60,7 +67,7 @@
   font-weight: bold;
   color: #fff;
 }
-.login-btn:hover {
+.signup-btn:hover {
   border: 1px solid #000;
   background-color: transparent;
   color: #000;
@@ -72,7 +79,19 @@
   text-decoration: underline;
 }
 
-.login-wrapper-footer-text {
+.signup-wrapper-footer-text {
   font-size: 14px;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .signup-form-section {
+    padding: 35px;
+  }
+}
+
+@media (max-width: 575px) {
+  .signup-wrapper {
+    width: 100%;
+  }
 }

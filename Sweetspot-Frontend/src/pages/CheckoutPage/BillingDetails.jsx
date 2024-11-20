@@ -219,7 +219,6 @@ function BillingDetails() {
                         <tr>
                           <th scope="col">Products</th>
                           <th scope="col">Name</th>
-                          <th scope="col">Price</th>
                           <th scope="col">Quantity</th>
                           <th scope="col">Total</th>
                         </tr>
@@ -237,20 +236,15 @@ function BillingDetails() {
                           cartItems.map((item) => (
                             <tr key={item.id}>
                               <th scope="row">
-                                <div className="d-flex align-items-center mt-2">
                                   <img
                                     src={item.imageUrl}
-                                    className="img-fluid rounded-circle"
-                                    style={{ width: "90px", height: "90px" }}
+                                    className="img-fluid"
+                                    
                                     alt=""
                                   />
-                                </div>
                               </th>
                               <td className="py-5">{item.title}</td>
-                              <td className="py-5">₹ {item.price}</td>
-                              <td className="py-5 d-flex justify-content-center">
-                                {item.quantity}
-                              </td>
+                              <td className="py-5">₹ {item.quantity}</td>
                               <td className="py-5">
                                 ₹ {item.price * item.quantity}
                               </td>

@@ -1,22 +1,25 @@
-.banner-container{
-    margin: 70px 0px;
-    display: flex;
-    justify-content: space-between;
-    color: black;
+.banner-container {
+  margin: 70px 0px;
+  display: flex;
+  justify-content: space-between;
+  color: black;
 }
 
-.banner-btn{
-    color: white;
-    background-color: #284b63;
-    border-color: white;
+.banner-container h1 {
+  color: #ffc300;
+}
+
+.banner-btn {
+  color: white;
+  background-color: #284b63;
+  border-color: white;
 }
 
 .banner .banner-btn:hover {
-    background: #ffc300;
+  background: #ffc300;
 }
 
-
-.banner-btn:hover{
-    color: white !important;
-    background-color: #ffc300 !important;
+.banner-btn:hover {
+  color: white !important;
+  background-color: #ffc300 !important;
 }

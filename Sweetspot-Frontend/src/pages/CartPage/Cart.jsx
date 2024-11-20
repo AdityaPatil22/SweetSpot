@@ -31,7 +31,7 @@ function Cart() {
   return (
     <div className="container-fluid py-5">
       <div className="container py-5">
-        <div className="table-container">
+        <div className="scrollable-table">
           <table className="table align-middle text-center">
             <thead className="sticky-thead bg-light">
               <tr>
@@ -52,22 +52,21 @@ function Cart() {
                 </tr>
               ) : (
                 cartItems.map((item) => (
-                  <tr key={item.id}>
+                  <tr key={item.id} >
                     <td>
                       <img
                         src={item.imageUrl}
-                        className="img-fluid rounded-circle"
-                        style={{ width: "80px", height: "80px" }}
+                        className="img-fluid "
                         alt={item.title}
                       />
                     </td>
                     <td>
-                      <p className="mb-0">{item.title}</p>
+                      <p className="mb-0 fw-bold">{item.title}</p>
                     </td>
                     <td>
                       <p className="mb-0">₹ {item.price}</p>
                     </td>
-                    <td style={{ width: "130px" }}>
+                    <td >
                       <div className="d-flex align-items-center justify-content-center">
                         <button
                           className="btn btn-sm btn-minus rounded-circle bg-light border"
@@ -77,7 +76,7 @@ function Cart() {
                         </button>
                         <input
                           type="text"
-                          className="form-control form-control-sm text-center border-0 mx-1"
+                          className="form-control form-control-sm text-center border-0 mx-1 w-25"
                           value={item.quantity}
                           readOnly
                         />
@@ -114,7 +113,7 @@ function Cart() {
               <h1 className="display-6 mb-4 fw-bold text-center">
                 Cart <span className="fw-normal">Total</span>
               </h1>
-              <div className="d-flex justify-content-between mb-4">
+              <div className="d-flex justify-content-between mb-2">
                 <h5>Discount :</h5>
                 <p>10 %</p>
               </div>
@@ -123,8 +122,8 @@ function Cart() {
                 <p>₹ 50</p>
               </div>
               <div className="py-2 border-top border-bottom d-flex justify-content-between">
-                <h5>Total</h5>
-                <p>₹ {cartTotal === 0 ? 0 : finalAmount}</p>
+                <p className="h4 mt-3 mb-3">Total</p>
+                <p className="h4 mt-3 mb-3">₹ {cartTotal === 0 ? 0 : finalAmount}</p>
               </div>
               {cartItems.length === 0 ? (
                 <div className="h4 text-center mt-4 ">Your cart is empty</div>

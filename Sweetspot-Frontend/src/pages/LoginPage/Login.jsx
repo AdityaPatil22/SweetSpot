@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../store/slices/authSlice";
 import axios from "axios";
 import Header from "../../components/Header/Header";
-import "./login.css";
+import "./Login.css";
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -84,7 +84,6 @@ function LoginPage() {
                   </label>
                   <div
                     className="password-wrapper"
-                    style={{ position: "relative" }}
                   >
                     <input
                       type={showPassword ? "text" : "password"}
@@ -94,21 +93,12 @@ function LoginPage() {
                       placeholder="Password"
                       value={formData.password}
                       onChange={handleChange}
-                      style={{ paddingRight: "40px" }}
                     />
                     <i
                       className={
                         showPassword ? "fas fa-eye-slash" : "fas fa-eye"
                       }
                       onClick={handleShowPassword}
-                      style={{
-                        position: "absolute",
-                        right: "10px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        cursor: "pointer",
-                        color: "#000000",
-                      }}
                       title={showPassword ? "Hide password" : "Show password"}
                     ></i>
                   </div>

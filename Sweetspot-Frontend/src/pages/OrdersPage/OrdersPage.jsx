@@ -22,7 +22,7 @@ function OrdersPage() {
       <Header />
       <PageTitle title="Orders" />
       <div className="orders-main-container container-fluid col-lg-9">
-        <div style={{ maxHeight: "calc(10 * 50px)", overflowY: "auto" }}>
+        <div>
           <table className="table table-styled">
             <thead>
               <tr>

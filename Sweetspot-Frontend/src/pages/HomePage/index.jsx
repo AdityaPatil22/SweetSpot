@@ -3,7 +3,6 @@ import Header from "../../components/Header/Header";
 import Banner from "./Banner";
 import CounterSection from "./CounterSection";
 import HomePageFront from "./HomePageFront";
-import "./style.css";
 
 function HomePage() {
   return (
