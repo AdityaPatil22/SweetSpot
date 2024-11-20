@@ -1,12 +1,9 @@
-/* Navbar styles */
 .navbar {
   height: 5rem;
   width: 100%;
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 999;
-  background-color: white;
+  background-color: #f5f3f4 !important;
 }
 
 .logo {
@@ -46,11 +43,20 @@
 
 .nav-link-icons {
   font-size: 23px;
+  margin-right: 1.5rem;
   transition: transform 0.1s ease, color 0.1s ease, font-size 0.1s ease;
 }
 
 .nav-link-icons:hover {
   cursor: pointer;
+}
+
+.badge {
+  font-size: 0.7rem;
+}
+
+li i {
+  color: #222222;
 }
 
 .dropdown-menu {
@@ -94,7 +100,6 @@
   background-color: #d90429 !important;
 }
 
-/* Responsive Styles for Mobile */
 @media screen and (max-width: 767px) {
   .navbar {
     height: auto;
@@ -134,13 +139,5 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .navbar-toggler {
-    border-color: #284b63;
-  }
-
-  .navbar-toggler-icon {
-    background-color: #284b63;
   }
 }

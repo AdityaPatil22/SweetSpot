@@ -4,7 +4,6 @@ function Footer() {
   return (
     <footer
       className="text-center text-lg-start"
-      style={{ backgroundColor: "#284b63" }}
     >
       <div className="container d-flex justify-content-center py-5">
         <button

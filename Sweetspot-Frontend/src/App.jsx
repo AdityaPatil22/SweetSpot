@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
-import ShopPage from "./pages/ShopPage";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
+import ShopPage from "./pages/ShopPage/ShopPage";
+import LoginPage from "./pages/LoginPage/Login";
+import SignUpPage from "./pages/SignUpPage/Signup";
 import CheckoutPage from "./pages/CheckoutPage";
 import CartPage from "./pages/CartPage";
 import PaymentPage from "./pages/PaymentPage";

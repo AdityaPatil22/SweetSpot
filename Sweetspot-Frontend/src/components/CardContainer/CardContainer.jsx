@@ -48,7 +48,7 @@ function CardContainer({ filter }) {
 
   return (
     <div className="cards-container mb-5">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mb-5">
         <div className="col-lg-9">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             {currentPosts.map((product) => (

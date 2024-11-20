@@ -1,51 +1,55 @@
+.cart-text {
+  font-size: 4rem;
+}
 
-.cart-text{
-    font-size: 4rem;
+tbody tr th img {
+  width: 90px !important;
+  height: 90px !important;
+  border-radius: 10px;
 }
 
 .sticky-thead {
-    position: sticky;
-    top: 0;
-    background-color: white; /* Optional: Adjust background color as needed */
-    z-index: 1; /* Ensure it's above the scrolling content */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
 }
 
 .scrollable-table {
-    height: 500px;
-    overflow: auto;
+  height: 500px;
+  overflow: auto;
 }
 .scrollable-table::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
+  width: 10px;
 }
 
 .scrollable-table::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Color of the track */
+  background: #f1f1f1;
 }
 
 .scrollable-table::-webkit-scrollbar-thumb {
-    background: #888; /* Color of the thumb */
-    border-radius: 5px; /* Rounded corners */
+  background: #888;
+  border-radius: 5px;
 }
 
 .scrollable-table::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Color of the thumb on hover */
+  background: #555;
 }
 
 .placeorder-btn {
-    background-color: white !important;
-    color: #284b63 !important;
-    border-color: #284b63 !important;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  background-color: white !important;
+  color: #284b63 !important;
+  border-color: #284b63 !important;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .placeorder-btn:hover {
-    background-color: #284b63 !important;
-    color: white !important;
-    border-color: #284b63 !important;
+  background-color: #284b63 !important;
+  color: white !important;
+  border-color: #284b63 !important;
 }
 
 .checkbox-check {
-    background-color: #284b63 !important;
-    transition: background-color 0.3s;
+  background-color: #284b63 !important;
+  transition: background-color 0.3s;
 }
-

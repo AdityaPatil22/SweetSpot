@@ -12,7 +12,7 @@ function ProductFilters({ activeTab, onTabChange }) {
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
-        <div className="col-lg-8 text-end">
+        <div className="col-lg-9 text-center">
           <ul className="nav nav-pills d-inline-flex text-center mb-5">
             {categories.map((category) => (
               <li className="nav-item" key={category}>

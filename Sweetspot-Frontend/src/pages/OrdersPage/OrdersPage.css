@@ -1,4 +1,4 @@
-.orders-main-container{
+.orders-main-container {
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -49,5 +49,5 @@
 .table th,
 .table td {
   text-align: center;
-  vertical-align: middle; 
+  vertical-align: middle;
 }

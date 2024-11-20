@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BannerImage from "../../assets/Images/banner-image.jpg"
 import "./Banner.css";
 
 function Banner() {
@@ -8,7 +9,7 @@ function Banner() {
         <div className="row g-5 align-items-center">
           <div className="col-lg-6">
             <div className="py-4">
-              <h1 className="display-4" style={{ color: "#ffc300" }}>
+              <h1 className="display-4 header-text">
                 Freshly baked cakes
               </h1>
               <p className="fw-normal display-4 text-dark mb-4">in Our Store</p>
@@ -25,12 +26,12 @@ function Banner() {
               </Link>
             </div>
           </div>
-          <div className="col-lg-5">
+          <div className="col-lg-6">
             <div className="position-relative ">
               <img
-                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1989&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src={BannerImage}
                 className="img-fluid w-100 rounded"
-                alt=""
+                alt="Banner image"
               />
             </div>
           </div>

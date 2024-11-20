@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
-import "./signup.css";
+import "./Signup.css";
 
 function SignUpPage() {
   const [formData, setFormData] = useState({
@@ -99,10 +99,7 @@ function SignUpPage() {
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
-                <div
-                  className="password-wrapper"
-                  style={{ position: "relative" }}
-                >
+                <div className="password-wrapper">
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
@@ -113,19 +110,10 @@ function SignUpPage() {
                     onChange={handleChange}
                     required
                     minLength="6"
-                    style={{ paddingRight: "40px" }}
                   />
                   <i
                     className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}
                     onClick={handleShowPassword}
-                    style={{
-                      position: "absolute",
-                      right: "10px",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      cursor: "pointer",
-                      color: "#000000",
-                    }}
                     title={showPassword ? "Hide password" : "Show password"}
                   ></i>
                 </div>

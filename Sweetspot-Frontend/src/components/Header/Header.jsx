@@ -31,13 +31,15 @@ function Header() {
   };
 
   const handleNavigate = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
       <div className="container-fluid">
-        <p className="h1 logo" onClick={handleNavigate}>SweetSpot</p>
+        <p className="h1 logo" onClick={handleNavigate}>
+          SweetSpot
+        </p>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
             <li className="nav-item">
@@ -67,29 +69,16 @@ function Header() {
 
           <ul className="navbar-nav ms-auto mb-2 mb-md-0">
             <li className="nav-item">
-              <Link
-                to="/cart"
-                className="nav-link-icons"
-                style={{ marginRight: "1.5rem" }}
-              >
-                <i
-                  className="fas fa-cart-shopping"
-                  style={{ color: "#000000" }}
-                ></i>
-                <span
-                  className="position-sticky top-0 translate-middle badge rounded-pill bg-danger"
-                  style={{ fontSize: "0.7rem" }}
-                >
+              <Link to="/cart" className="nav-link-icons">
+                <i className="fas fa-cart-shopping"></i>
+                <span className="position-sticky translate-middle badge rounded-pill bg-danger">
                   {totalQuantity}
                 </span>
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
-                className="nav-link-icons dropdown-toggle"
-                style={{ marginRight: "1.5rem" }}
-              >
-                <i className="fas fa-user" style={{ color: "#000000" }}></i>
+              <a className="nav-link-icons dropdown-toggle">
+                <i className="fas fa-user"></i>
               </a>
               <div
                 className="dropdown-menu dropdown-menu-end"
