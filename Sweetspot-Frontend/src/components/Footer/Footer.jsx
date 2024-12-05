@@ -3,7 +3,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="text-center text-lg-start">
-      <div className="container d-flex justify-content-center py-5">
+      <div className="container d-flex justify-content-center py-3">
         <button
           type="button"
           className="btn btn-primary btn-lg btn-floating mx-2 footer-btn"

@@ -236,15 +236,14 @@ function BillingDetails() {
                           cartItems.map((item) => (
                             <tr key={item.id}>
                               <th scope="row">
-                                  <img
-                                    src={item.imageUrl}
-                                    className="img-fluid"
-                                    
-                                    alt=""
-                                  />
+                                <img
+                                  src={item.imageUrl}
+                                  className="img-fluid"
+                                  alt=""
+                                />
                               </th>
                               <td className="py-5">{item.title}</td>
-                              <td className="py-5">₹ {item.quantity}</td>
+                              <td className="py-5">{item.quantity}</td>
                               <td className="py-5">
                                 ₹ {item.price * item.quantity}
                               </td>

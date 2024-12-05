@@ -108,9 +108,6 @@ function LoginPage() {
                   <button type="submit" className="btn login-btn">
                     Login
                   </button>
-                  <a href="#!" className="forgot-password-link">
-                    Forgot Password?
-                  </a>
                 </div>
               </form>
               <p className="login-wrapper-footer-text">
