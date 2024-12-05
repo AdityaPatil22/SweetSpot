@@ -79,7 +79,7 @@ function PaymentForm() {
   };
 
   return (
-    <div className="container p-0 mb-5 mt-5">
+    <div className="container p-0 mb-5 mt-5 py-5">
       <div className="card px-4">
         {payAlert && (
           <div className="alert alert-success mt-4" role="alert">
