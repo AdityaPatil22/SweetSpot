@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchShippingDetails } from "../../store/slices/shippingSlice";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import "./OrdersPage.css";
 
@@ -19,7 +17,6 @@ function OrdersPage() {
 
   return (
     <>
-      <Header />
       <PageTitle title="Orders" />
       <div className="orders-main-container container-fluid col-lg-9">
         <div>
@@ -57,7 +54,6 @@ function OrdersPage() {
           </table>
         </div>
       </div>        
-      <Footer />
     </>
   );
 }
