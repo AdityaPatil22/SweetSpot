@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import LoginPage from "./pages/LoginPage/Login";
@@ -9,36 +9,58 @@ import CartPage from "./pages/CartPage";
 import PaymentPage from "./pages/PaymentPage";
 import AddItems from "./pages/AddItemsPage/AddItems";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
-import ProductPage from "./pages/ProductPage/ProductPage"
+import ProductPage from "./pages/ProductPage/ProductPage";
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
-import SuperAdminRoute from "./components/protectedRoute/superAdminRoute"
+import SuperAdminRoute from "./components/protectedRoute/superAdminRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: (
+      <Layout>
+        <HomePage />
+      </Layout>
+    ),
   },
   {
     path: "login",
-    element: <LoginPage />,
+    element: (
+      <Layout>
+        <LoginPage />
+      </Layout>
+    ),
   },
   {
     path: "signup",
-    element: <SignUpPage />,
+    element: (
+      <Layout>
+        <SignUpPage />
+      </Layout>
+    ),
   },
   {
     path: "shop",
-    element: <ShopPage />,
+    element: (
+      <Layout>
+        <ShopPage />
+      </Layout>
+    ),
   },
   {
     path: "/product/:id",
-    element: <ProductPage />,
+    element: (
+      <Layout>
+        <ProductPage />
+      </Layout>
+    ),
   },
   {
     path: "checkout",
     element: (
       <ProtectedRoute>
-        <CheckoutPage />
+        <Layout>
+          <CheckoutPage />
+        </Layout>
       </ProtectedRoute>
     ),
   },
@@ -46,7 +68,9 @@ const router = createBrowserRouter([
     path: "cart",
     element: (
       <ProtectedRoute>
-        <CartPage />
+        <Layout>
+          <CartPage />
+        </Layout>
       </ProtectedRoute>
     ),
   },
@@ -54,7 +78,9 @@ const router = createBrowserRouter([
     path: "payment",
     element: (
       <ProtectedRoute>
-        <PaymentPage />
+        <Layout>
+          <PaymentPage />
+        </Layout>
       </ProtectedRoute>
     ),
   },
@@ -62,7 +88,9 @@ const router = createBrowserRouter([
     path: "add-items",
     element: (
       <SuperAdminRoute>
-        <AddItems />
+        <Layout>
+          <AddItems />
+        </Layout>
       </SuperAdminRoute>
     ),
   },
@@ -70,7 +98,9 @@ const router = createBrowserRouter([
     path: "orders",
     element: (
       <SuperAdminRoute>
-        <OrdersPage />
+        <Layout>
+          <OrdersPage />
+        </Layout>
       </SuperAdminRoute>
     ),
   },
