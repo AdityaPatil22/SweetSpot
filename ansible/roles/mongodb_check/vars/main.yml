@@ -1,2 +1,0 @@
----
-# No internal variables; mongo_uri is set dynamically in tasks.

@@ -1,2 +1,0 @@
----
-# No internal variables; all state comes from registered facts set by other roles.
