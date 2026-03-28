@@ -24,7 +24,7 @@ npm install
 3. Create a `.env` file in the root directory with the following variables:
 ```env
 PORT=3000
-MONGODB_URI=your_mongodb_connection_string
+MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 ```
 

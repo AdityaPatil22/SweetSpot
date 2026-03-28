@@ -1,0 +1,4 @@
+---
+cloudinary_cloud_name: "dgv6havjj"
+cloudinary_timeout: 15
+cloudinary_accepted_status_codes: [200, 400, 401, 403, 404]

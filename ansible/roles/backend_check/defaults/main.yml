@@ -1,0 +1,4 @@
+---
+backend_url: "https://sweetspot-p34g.onrender.com"
+backend_health_endpoint: "/api/items"
+backend_timeout: 60

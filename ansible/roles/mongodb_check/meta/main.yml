@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  role_name: mongodb_check
+  author: SweetSpot Team
+  description: Health check for MongoDB Atlas connectivity
+  min_ansible_version: "2.14"
+  platforms:
+    - name: GenericUNIX
+      versions:
+        - all
+dependencies: []

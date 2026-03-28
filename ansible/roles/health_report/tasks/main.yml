@@ -1,0 +1,42 @@
+---
+- name: "Report | Display Health Check Summary"
+  vars:
+    b: "{{ 'UP' if backend_check is succeeded else 'DOWN' }}"
+    f: "{{ 'UP' if frontend_check is succeeded else 'DOWN' }}"
+    c: "{{ 'REACHABLE' if cloudinary_check is succeeded else 'UNREACHABLE' }}"
+    m: "{{ 'CONNECTED' if mongodb_check is succeeded else 'DISCONNECTED' }}"
+  ansible.builtin.debug:
+    msg: |
+
+      ===================================================
+         SweetSpot — Service Health Check Report
+      ===================================================
+
+       Backend (Render)      : {{ b }}
+         URL      : {{ backend_url }}
+         HTTP     : {{ backend_check.status | default('N/A') }}
+
+       Frontend (Netlify)    : {{ f }}
+         URL      : {{ frontend_url }}
+         HTTP     : {{ frontend_check.status | default('N/A') }}
+
+       Cloudinary API        : {{ c }}
+         Cloud    : {{ cloudinary_cloud_name }}
+         HTTP     : {{ cloudinary_check.status | default('N/A') }}
+
+       MongoDB Atlas         : {{ m }}
+         {{ mongodb_check.stdout | default(mongodb_check.stderr | default('No output')) }}
+
+      ===================================================
+
+- name: "Report | Fail if any service is unhealthy"
+  ansible.builtin.fail:
+    msg: >-
+      One or more services are down — review the report above.
+  when:
+    - fail_on_unhealthy | bool
+    - >
+      backend_check is failed or
+      frontend_check is failed or
+      cloudinary_check is failed or
+      mongodb_check is failed

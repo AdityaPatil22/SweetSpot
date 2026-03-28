@@ -1,0 +1,2 @@
+---
+backend_check_url: "{{ backend_url }}{{ backend_health_endpoint }}"

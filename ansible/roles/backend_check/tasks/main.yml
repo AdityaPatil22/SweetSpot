@@ -1,0 +1,9 @@
+---
+- name: "Backend | Check API on Render"
+  ansible.builtin.uri:
+    url: "{{ backend_check_url }}"
+    method: GET
+    timeout: "{{ backend_timeout }}"
+    validate_certs: true
+  register: backend_check
+  ignore_errors: true

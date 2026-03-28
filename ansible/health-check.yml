@@ -1,0 +1,11 @@
+---
+- name: SweetSpot - Service Health Check
+  hosts: local
+  gather_facts: false
+
+  roles:
+    - role: backend_check
+    - role: frontend_check
+    - role: cloudinary_check
+    - role: mongodb_check
+    - role: health_report

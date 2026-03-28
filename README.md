@@ -11,6 +11,7 @@ SweetSpot is a full-stack e-commerce application built to manage products, order
   - [Using Docker Hub Images](#using-docker-hub-images)
   - [Building Locally](#building-locally)
 - [Project Directory Structure](#project-directory-structure)
+- [Service Health Checks (Ansible)](#service-health-checks-ansible)
 - [Troubleshooting](#troubleshooting)
 ## Features
 
@@ -114,18 +115,27 @@ Once the containers are running, you can access the application via the followin
 ```
 .
 ├── docker-compose.yml
-├── frontend/
+├── README.md
+├── Sweetspot-Frontend/
 │   ├── Dockerfile
 │   ├── package.json
 │   └── src/
 │       └── ...
-├── backend/
+├── Sweetspot-Backend/
 │   ├── Dockerfile
 │   ├── package.json
-│   ├── server.js
-│   └── routes/
+│   ├── index.js
+│   └── api/
 │       └── ...
-└── README.md
+└── ansible/
+    ├── health-check.yml
+    ├── inventory.ini
+    └── roles/
+        ├── backend_check/
+        ├── frontend_check/
+        ├── cloudinary_check/
+        ├── mongodb_check/
+        └── health_report/
 ```
 
 ## Docker Images
@@ -141,6 +151,114 @@ Our Docker images are available on Docker Hub:
   - Tags:
     - `latest`: Most recent stable version
     - `v1.0.0`: Initial release
+
+## Service Health Checks (Ansible)
+
+An Ansible playbook is included to verify that all external services powering SweetSpot are up and running. It checks four services in sequence and prints a consolidated report.
+
+### Services Checked
+
+| Service | What is verified | Method |
+|---|---|---|
+| **Backend (Render)** | API responds at `/api/items` | HTTP GET (60 s timeout for cold-start) |
+| **Frontend (Netlify)** | Site returns HTTP 200 | HTTP GET |
+| **Cloudinary** | Image API endpoint is reachable | HTTP GET |
+| **MongoDB Atlas** | Cluster accepts connections and responds to `ping` | pymongo driver |
+
+### Prerequisites
+
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) (core >= 2.14)
+- Python 3 with `pymongo` and `certifi`:
+  ```bash
+  pip install pymongo certifi
+  ```
+
+### Playbook Structure
+
+The playbook follows the Ansible **roles** pattern for modularity and reusability:
+
+```
+ansible/
+├── health-check.yml              # Main playbook (orchestrator)
+├── inventory.ini                 # Localhost inventory
+└── roles/
+    ├── backend_check/            # Render backend API check
+    │   ├── tasks/main.yml
+    │   ├── defaults/main.yml     #   backend_url, timeout (overridable)
+    │   ├── vars/main.yml
+    │   ├── handlers/main.yml
+    │   └── meta/main.yml
+    ├── frontend_check/           # Netlify frontend check
+    │   ├── tasks/main.yml
+    │   ├── defaults/main.yml     #   frontend_url, timeout
+    │   ├── vars/main.yml
+    │   ├── handlers/main.yml
+    │   └── meta/main.yml
+    ├── cloudinary_check/         # Cloudinary API check
+    │   ├── tasks/main.yml
+    │   ├── defaults/main.yml     #   cloud_name, accepted status codes
+    │   ├── vars/main.yml
+    │   ├── handlers/main.yml
+    │   └── meta/main.yml
+    ├── mongodb_check/            # MongoDB Atlas connectivity check
+    │   ├── tasks/main.yml
+    │   ├── defaults/main.yml     #   .env file path, timeout
+    │   ├── vars/main.yml
+    │   ├── handlers/main.yml
+    │   └── meta/main.yml
+    └── health_report/            # Aggregated summary & failure gate
+        ├── tasks/main.yml
+        ├── defaults/main.yml     #   fail_on_unhealthy toggle
+        ├── vars/main.yml
+        ├── handlers/main.yml
+        └── meta/main.yml
+```
+
+Each role's `defaults/main.yml` contains low-priority variables (URLs, timeouts) that you can override at the command line without editing any files.
+
+### Running the Playbook
+
+From the project root:
+
+```bash
+ansible-playbook ansible/health-check.yml -i ansible/inventory.ini
+```
+
+A successful run prints a report like this:
+
+```
+===================================================
+   SweetSpot — Service Health Check Report
+===================================================
+
+ Backend (Render)      : UP
+   URL      : https://sweetspot-p34g.onrender.com
+   HTTP     : 200
+
+ Frontend (Netlify)    : UP
+   URL      : https://sweets-spot.netlify.app
+   HTTP     : 200
+
+ Cloudinary API        : REACHABLE
+   Cloud    : dgv6havjj
+   HTTP     : 404
+
+ MongoDB Atlas         : CONNECTED
+   Ping OK: {'ok': 1}  |  Databases: sweetspot, test, admin, local
+
+===================================================
+```
+
+**Exit codes:** `0` = all healthy, `2` = one or more services are down.
+
+### Useful Options
+
+| What you want | Command |
+|---|---|
+| Verbose output | `ansible-playbook ansible/health-check.yml -i ansible/inventory.ini -v` |
+| Monitor only (don't fail on errors) | `ansible-playbook ansible/health-check.yml -i ansible/inventory.ini -e "fail_on_unhealthy=false"` |
+| Override a URL (e.g. staging backend) | `ansible-playbook ansible/health-check.yml -i ansible/inventory.ini -e "backend_url=https://staging.onrender.com"` |
+| Override multiple variables | `ansible-playbook ansible/health-check.yml -i ansible/inventory.ini -e "backend_url=https://staging.onrender.com frontend_url=https://staging.netlify.app"` |
 
 ## Troubleshooting
 

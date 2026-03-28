@@ -1,0 +1,10 @@
+---
+- name: "Frontend | Check site on Netlify"
+  ansible.builtin.uri:
+    url: "{{ frontend_url }}"
+    method: GET
+    timeout: "{{ frontend_timeout }}"
+    validate_certs: true
+    return_content: false
+  register: frontend_check
+  ignore_errors: true

@@ -1,0 +1,45 @@
+---
+- name: "MongoDB | Read MONGO_URI from backend .env"
+  ansible.builtin.shell:
+    cmd: "grep '^MONGO_URI=' {{ mongodb_env_file }} | cut -d'=' -f2-"
+  register: mongo_uri_result
+  changed_when: false
+  failed_when: mongo_uri_result.stdout | length == 0
+
+- name: "MongoDB | Store connection URI"
+  ansible.builtin.set_fact:
+    mongo_uri: "{{ mongo_uri_result.stdout }}"
+
+- name: "MongoDB | Ping Atlas cluster"
+  ansible.builtin.shell: |
+    python3 << 'PYEOF'
+    import sys, os
+    try:
+        from pymongo import MongoClient
+    except ImportError:
+        print("pymongo not installed – run: pip install pymongo", file=sys.stderr)
+        sys.exit(1)
+    try:
+        import certifi
+        ca = certifi.where()
+    except ImportError:
+        ca = None
+    try:
+        client = MongoClient(
+            os.environ["MONGO_URI"],
+            serverSelectionTimeoutMS={{ mongodb_timeout_ms }},
+            tls=True,
+            tlsCAFile=ca,
+        )
+        result = client.admin.command("ping")
+        db_names = client.list_database_names()
+        print(f"Ping OK: {result}  |  Databases: {', '.join(db_names)}")
+    except Exception as e:
+        print(f"Connection failed: {e}", file=sys.stderr)
+        sys.exit(1)
+    PYEOF
+  environment:
+    MONGO_URI: "{{ mongo_uri }}"
+  register: mongodb_check
+  ignore_errors: true
+  changed_when: false

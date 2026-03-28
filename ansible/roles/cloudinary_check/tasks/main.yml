@@ -1,0 +1,10 @@
+---
+- name: "Cloudinary | Check API reachability"
+  ansible.builtin.uri:
+    url: "{{ cloudinary_api_url }}"
+    method: GET
+    timeout: "{{ cloudinary_timeout }}"
+    validate_certs: true
+    status_code: "{{ cloudinary_accepted_status_codes }}"
+  register: cloudinary_check
+  ignore_errors: true
